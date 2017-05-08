@@ -2,6 +2,7 @@ require 'sinatra'
 require 'sinatra/json'
 require 'bundler'
 require 'youtube-dl.rb'
+require 'scissor'
 
 Bundler.require
 
@@ -27,4 +28,10 @@ post '/test/download' do
     puts video.filename + ' downloaded!'
     status 201
     json "success"
+end
+
+get '/test/chop' do
+    foo = Scissor('name.mp3') # dummy
+
+    foo[3, 110] > 'test.mp3'
 end
