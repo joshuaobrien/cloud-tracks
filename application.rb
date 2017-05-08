@@ -5,9 +5,17 @@ require 'youtube-dl.rb'
 require 'scissor'
 
 Bundler.require
+require 'track'
+
+DataMapper.setup(:default, 'sqlite::memory:')
+DataMapper.finalize
+DataMapper.auto_migrate!
 
 get '/' do
     "you've happened upon a terrible fate, haven't you?\n"
+
+
+    
 end
 
 post '/test/download' do
