@@ -11,7 +11,8 @@
 #content {
 	margin: auto;
 	position: relative;
-	width: 720px;
+	max-width: 720px;
+	min-width: 520px;
 	/*background-color: blue;*/
 }
 
@@ -21,14 +22,24 @@
 }
 
 #logo-container {
-	width: 350px;
-	height: 220px;
+	width: 250px;
+	height: 175px;
 	margin: auto;
 	/*background-color: pink;*/
 }
 
 #logo {
-	width: 350px;
+	width: 250px;
+}
+
+#title {
+	text-align: center;
+	margin: 0 auto;
+	font-size: 22px;
+	letter-spacing: 24px;
+	color: #282828;
+	text-indent: 52px;
+	opacity: 0.8;
 }
 
 #glow-dot {
