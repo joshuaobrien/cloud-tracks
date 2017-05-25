@@ -11,7 +11,7 @@
 #content {
 	margin: auto;
 	position: relative;
-	max-width: 720px;
+	max-width: 620px;
 	min-width: 520px;
 	/*background-color: blue;*/
 }
@@ -22,14 +22,14 @@
 }
 
 #logo-container {
-	width: 250px;
-	height: 175px;
+	width: 200px;
+	height: 150px;
 	margin: auto;
 	/*background-color: pink;*/
 }
 
 #logo {
-	width: 250px;
+	width: 200px;
 }
 
 #title {
@@ -62,10 +62,13 @@
 	border-width: 2px;
 	border-style: solid;
 	border-color: pink;
+
+	box-shadow: 0 10px 20px -10px lightgray;
 }
 #paste-box-container:hover {
 	/*border-width: 1px;*/
-	box-shadow: 0 0 3px 1px lightpink;
+	/*box-shadow: 0 0 3px 1px lightpink;*/
+	box-shadow: 0 8px 20px -10px gray;
 }
 
 #button-container {
