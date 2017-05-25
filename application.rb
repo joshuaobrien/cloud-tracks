@@ -40,6 +40,6 @@ post '/test/download' do
     puts 'Ripping...'
     metadata = downloader.rip_metadata(params[:url])
     puts 'Splitting..'
-    splitter.split_tape(params[:url], metadata)
+    splitter.split_tape(filename, metadata)
     puts 'Ayy nice'
 end
