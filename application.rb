@@ -7,13 +7,28 @@ require 'pp'
 Bundler.require
 require 'track'
 
+load 'lib/services/download_service.rb'
+load 'lib/services/splitter_service.rb'
+
 DataMapper.setup(:default, 'sqlite::memory:')
 DataMapper.finalize
 DataMapper.auto_migrate!
 
+
+downloader = DownloadService.new
+splitter = SplitterService.new
+
 get '/' do
     system "youtube-dl --skip-download -j https://www.youtube.com/watch?v=MOFG0dtkGRk"
     "you've happened upon a terrible fate, haven't you?\n"
+end
+
+post '/real/download_tape' do
+    content_type :json
+
+    puts params[:url]
+    raw_video_info = `youtube-dl https://www.youtube.com/watch?v=MOFG0dtkGRk`
+
 end
 
 post '/test/download' do
@@ -21,38 +36,25 @@ post '/test/download' do
 
     puts params[:url]
 
-    video = YoutubeDL::Video.new(params[:url])
-    video.options.configure do |c|
-        c.get_filename = true
-        #c.output = "%(title)s.mp3"
-        c.output = "source.m4a"
-        c.format = "140"
-
-        puts 'Downloading...'
-    end
-
-    video.download
-
-    puts video.filename + ' downloaded!'
-
-    timing = rip_timings(video.filename)
-
-    dat_split(video.filename, timing)
-
-end
-
-def rip_timings(name)
-    # temporarily stubbed until we get /real data/
-    puts 'Ripping timing for ' + name
-    track_data = read_temp_data()
-
-    return track_data
+    puts 'Downloading...'
+    filename = downloader.download_tape(params[:url])
+    puts 'Ripping...'
+    metadata = downloader.rip_metadata(params[:url])
+    puts 'Splitting..'
+    splitter.split_tape(params[:url], metadata)
+    puts 'Ayy nice'
 end
 
 def dat_split(source, track_data)
     track_data.each do |track|
-        start = Time.parse(track['start'])
-        finish = Time.parse(track['end'])
+        #start = Time.parse(track['start'])
+        #finish = Time.parse(track['end'])
+
+        start = Time.at(track['start']).utc.strftime("%H:%M:%S")
+        puts start
+        finish = Time.at(track['end']).utc.strftime("%H:%M:%S")
+        puts finish
+
 
 
         duration = Time.at(finish.to_time - start.to_time).utc.strftime("%H:%M:%S")
@@ -84,13 +86,3 @@ get '/test/chop' do
     status 201
     json "success"
 end
-
-
-def read_temp_data()
-    file = File.read('temp.json')
-    return JSON.parse(file)['tracks']
-end
-
-#raw_video_info = `youtube-dl --skip-download -j https://www.youtube.com/watch?v=MOFG0dtkGRk`
-#json_video_info = JSON.parse(raw_video_info)
-#puts json_video_info['chapters']
