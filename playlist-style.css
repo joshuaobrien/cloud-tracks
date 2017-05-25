@@ -1,0 +1,28 @@
+#content-col {
+    position: relative;
+    margin: 0 auto;
+    background-color: green;
+    max-width: 1130px;
+}
+
+#content-header {
+    height: 200px;
+    background-color: cyan;
+}
+
+#content {
+    position: relative;
+    margin: 0 auto;
+    margin-top: 25px;
+    min-width: 860px;
+    background-color: blue;
+}
+
+.playlist-item {
+    margin: 12px;
+    height: 160px;
+    width: 160px;
+    background-color: pink;
+    display: inline-block;
+}
+
