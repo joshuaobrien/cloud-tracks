@@ -57,18 +57,6 @@
 	margin-top: 30px;
 	width: 100%;
 	height: 40px;
-}
-
-#paste-box-container > input {
-	width: 100%;
-	height: 100%;
-
-	font-size: 14px;
-	text-indent: 16px;
-	letter-spacing: 1px;
-	color: #282828;
-
-	background-color: #fafafa;
 
 	border-radius: 2px;
 	border-width: 2px;
@@ -78,42 +66,83 @@
 	box-shadow: 0 10px 20px -10px lightgray;
 }
 
-#paste-box-container > input:hover {
+#paste-box-container:hover {
 	box-shadow: 0 8px 20px -10px gray;
+}
+
+#paste-box-container:focus {
+	background-color: white;
+	border-color: lightpink;
+	box-shadow: 0 8px 20px -10px gray;
+}
+
+#paste-box-container > input {
+	width: 100%;
+	height: 90%;
+	outline: 0;
+	border: none;
+	box-shadow: none;
+
+	background-color: #fafafa;
+
+	font-size: 14px;
+	text-indent: 16px;
+	letter-spacing: 1px;
+	color: #282828;
+}
+
+#paste-box-container > input:hover {
 }
 
 #paste-box-container > input:focus {
 	outline: 0;
 	background-color: white;
-	border-color: lightpink;
-	box-shadow: 0 8px 20px -10px gray;
-	-webkit-box-shadow: 0 8px 20px -10px gray;
 }
 
 #button-container {
-	margin: 0 auto;
-	margin-top: 24px;
-	text-align: center;
+	float: right;
+	position: absolute;
+	right: 2px;
+	bottom: 3px;
+	text-align: right;
 }
 
 .button {
 	box-sizing: border-box;
 	display: inline-block;
-	width: 150px;
-	height: 45px;
+	width: 100px;
+	height: 30px;
+	padding-right: 4px;
 	/*background-color: yellow;*/
-	margin-left: 4px;
-	margin-right: 4px;
-	background-color: #fcfcfc;
+	background-color: #fafafa;
 
 	color: #282828;
 	font-size: 12px;
-	line-height: 45px;
+	line-height: 30px;
 	letter-spacing: 4px;
+	text-indent: -8px;
 }
 
 .button:hover {
+	color: hotpink;
 	/*margin-left: 5px;*/
-	border-width: 1px;
-	box-shadow: 0 0 2px 0 #737373;
+	/*border-width: 1px;
+	box-shadow: 0 0 2px 0 #737373;*/
+}
+
+.icon-button {
+	/*background-color: red;*/
+	padding-right: 8px;
+	padding-left: 24px;
+}
+
+.icon-button > img {
+	/*background-color: blue;*/
+	padding: 4px;
+	opacity: 0.5;
+}
+
+.icon-button > img:hover {
+	cursor: pointer;
+	opacity: 0.75;
 }

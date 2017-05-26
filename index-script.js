@@ -3,5 +3,11 @@ new Vue({
     data: {
         message: "cloud tracks",
         userLink: "https://www.youtube.com/watch?v=rC3L-Z6x4dg"
+    },
+
+    methods: {
+        pasteLink: function() {
+            alert("Pasted")
+        }
     }
 })
