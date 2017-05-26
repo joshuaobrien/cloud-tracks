@@ -24,19 +24,13 @@
 			</div>
 
 			<div id="paste-box-container">
-				<input v-model="userLink" @focus="highlightFocus(true)" @blur="highlightFocus(false)" :style="highlight">
+				<input type="text" spellcheck="false" v-model="userLink">
 				<div id="button-container">
-					<!--<div class="button" id="go-button">
-						\\ okay
-					</div>-->
 					<div class="icon-button" id="download-button" :style="highlight">
 						<img src="assets/res/cloud-download.png">
 					</div>
 				</div>
 			</div>
-
-			
-			
 		</div>
 	</div>
 </div>
