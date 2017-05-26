@@ -3,7 +3,7 @@ new Vue({
     data: {
         message: "cloud tracks",
         userLink: "https://www.youtube.com/watch?v=rC3L-Z6x4dg",
-        inputStyle: {
+        highlight: {
             backgroundColor: '#fafafa'
         }
     },
@@ -13,12 +13,12 @@ new Vue({
             alert("Pasted")
         },
 
-        hoverOn: function() {
-            this.inputStyle.backgroundColor = 'white'
+        highlightFocus: function(on) {
+            if (on) {
+                this.highlight.backgroundColor = 'white'
+            } else {
+                this.highlight.backgroundColor = '#fafafa'
+            }
         },
-
-        hoverOff: function() {
-            this.inputStyle.backgroundColor = '#fafafa'
-        }
     }
 })

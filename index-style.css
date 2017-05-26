@@ -57,23 +57,6 @@
 	margin-top: 30px;
 	width: 100%;
 	height: 40px;
-
-	border-radius: 2px;
-	border-width: 2px;
-	border-style: solid;
-	border-color: pink;
-
-	box-shadow: 0 10px 20px -10px lightgray;
-}
-
-#paste-box-container:hover {
-	box-shadow: 0 8px 20px -10px gray;
-}
-
-#paste-box-container:focus {
-	background-color: white;
-	border-color: lightpink;
-	box-shadow: 0 8px 20px -10px gray;
 }
 
 input {
@@ -89,17 +72,29 @@ input {
 	font-size: 14px;
 	letter-spacing: 1px;
 	color: #282828;
+
+	border-radius: 2px;
+	border-width: 2px;
+	border-style: solid;
+	border-color: pink;
+
+	box-shadow: 0 10px 20px -10px lightgray;
+}
+
+input:hover {
+	box-shadow: 0 8px 20px -10px gray;
 }
 
 input:focus {
 	outline: 0;
-	background-color: red;
+	border-color: pink;
+	box-shadow: 0 8px 20px -10px gray;
 }
 
 #button-container {
 	float: right;
 	position: absolute;
-	right: 2px;
+	right: 5px;
 	bottom: 4px;
 	text-align: right;
 }
