@@ -24,12 +24,12 @@
 			</div>
 
 			<div id="paste-box-container">
-				<input v-model="userLink">
+				<input v-model="userLink" @focus="hoverOn" @blur="hoverOff" :style="inputStyle">
 				<div id="button-container">
 					<!--<div class="button" id="go-button">
 						\\ okay
 					</div>-->
-					<div class="icon-button" id="download-button">
+					<div class="icon-button" id="download-button" :style="inputStyle">
 						<img src="assets/res/cloud-download.png">
 					</div>
 				</div>

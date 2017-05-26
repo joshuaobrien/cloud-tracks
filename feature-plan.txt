@@ -1,0 +1,16 @@
+Home Page:
+    'cloud tracks' title changes to a 'welcome' message if the user is logged in
+
+    paste button places clipboard content into form box
+    
+    form box HTTPS directly into API through vue
+
+    a preview box of the track (its title, background, length) pops up and then the user is expected to press the okay button
+        this starts a countdown timer that, after 5 seconds, automatically presses the okay button and procedes
+
+        Of course, the user may press the okay button at any time, even before the preview has loaded
+
+        This preview will occur as:
+            the title of above the pastebox changes to the playlist title
+            the cloud logo changes to a thumbnail from the playlist
+            
