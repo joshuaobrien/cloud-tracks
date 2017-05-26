@@ -89,11 +89,11 @@ input:focus {
 	outline: 0;
 	border-color: pink;
 	box-shadow: 0 8px 20px -10px gray;
-	background-color: red;
+	background-color: white;
 }
 
 input:focus ~ #button-container {
-	background-color: red;
+	background-color: white;
 }
 
 #button-container {

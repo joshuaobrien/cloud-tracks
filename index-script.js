@@ -6,8 +6,6 @@ new Vue({
     },
 
     methods: {
-        pasteLink: function() {
-            alert("Pasted")
-        }
+        
     }
 })
