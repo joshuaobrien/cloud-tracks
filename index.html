@@ -17,7 +17,7 @@
 			</div>
 
 			<div id="title">
-				{{message}}
+				<p>{{message}}</p>
 			</div>
 
 			<div id="glow-dot">
@@ -26,11 +26,12 @@
 			<div id="paste-box-container">
 				<input type="text" spellcheck="false" v-model="userLink">
 				<div id="button-container">
-					<div class="icon-button" id="download-button" :style="highlight">
+					<div class="icon-button" id="download-button" @click="download">
 						<img src="assets/res/cloud-download.png">
 					</div>
 				</div>
 			</div>
+			
 		</div>
 	</div>
 </div>

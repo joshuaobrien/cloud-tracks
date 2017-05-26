@@ -6,6 +6,8 @@ new Vue({
     },
 
     methods: {
-        
+        download: function() {
+            alert("TEST: " + this.userLink);
+        }
     }
 })

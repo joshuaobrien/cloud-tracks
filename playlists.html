@@ -1,47 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Playlists</title>
-	<link rel="stylesheet" type="text/css" href="reset.css">
-	<link rel="stylesheet" type="text/css" href="playlist-style.css">
+      <title>Playlists</title>
+      <link rel="stylesheet" type="text/css" href="reset.css">
+      <link rel="stylesheet" type="text/css" href="playlists-style.css">
+      <script src="https://unpkg.com/vue"></script>
 </head>
 
 <body>
 <div id="window">
-	<div id="content-col">
-        <div id="content-header">
-        </div>
-		<div id="content">
-            <div class="playlist-item">
+      <div id="content-col">
+            <div id="content-header">
+                  <h1>NIQQA WE OUT HERE</h1>
             </div>
-            <div class="playlist-item">
+
+            <div id="content">
+                  <ol>
+                        <playlist-item
+                              v-for="item in playlists"
+                              v-bind:playlist="item"
+                              v-bind:key="item.id">
+                        </playlist-item>
+                  </ol>
             </div>
-            <div class="playlist-item">
-            </div>
-            <div class="playlist-item">
-            </div>
-            <div class="playlist-item">
-            </div>
-            <div class="playlist-item">
-            </div>
-            <div class="playlist-item">
-            </div>
-            <div class="playlist-item">
-            </div>
-            <div class="playlist-item">
-            </div>
-            <div class="playlist-item">
-            </div>
-            <div class="playlist-item">
-            </div>
-            <div class="playlist-item">
-            </div>
-            <div class="playlist-item">
-            </div>
-            <div class="playlist-item">
-            
-		</div>
-	</div>
+      </div>
 </div>
 </body>
+<script src="playlists-script.js"></script>
 </html>

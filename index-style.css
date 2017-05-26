@@ -1,11 +1,8 @@
 #content-row {
 	width: 100%;
-	/*min-height: 540px;*/
-	/*height: 50%;*/
 	margin: auto;
-	margin-top: 10%;
+	margin-top: 200px;
   	position: relative;
-  	top: 0; left: 0; bottom: 0; right: 0;
 	/*background-color: blue;*/
 }
 
@@ -71,7 +68,7 @@ input {
 
 	font-size: 14px;
 	letter-spacing: 1px;
-	color: #282828;
+	color: #525252;
 
 	border-radius: 2px;
 	border-width: 2px;
@@ -87,7 +84,7 @@ input:hover {
 
 input:focus {
 	outline: 0;
-	border-color: pink;
+	border-color: lightpink;
 	box-shadow: 0 8px 20px -10px gray;
 	background-color: white;
 }
@@ -102,17 +99,15 @@ input:focus ~ #button-container {
 	right: 5px;
 	bottom: 4px;
 	text-align: right;
+	background-color: #fafafa;
 }
 
 .icon-button {
-	/*background-color: red;*/
-	/*background-color: #fafafa;*/
 	padding-right: 8px;
 	padding-left: 24px;
 }
 
 .icon-button > img {
-	/*background-color: blue;*/
 	padding: 4px;
 	opacity: 0.5;
 }
