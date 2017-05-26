@@ -3,17 +3,12 @@ require 'sinatra/json'
 require 'bundler'
 require 'youtube-dl.rb'
 require 'pp'
+require 'sinatra/activerecord'
+require './config/environments'
 
-Bundler.require
-require 'track'
 
 load 'lib/services/download_service.rb'
 load 'lib/services/splitter_service.rb'
-
-DataMapper.setup(:default, 'sqlite::memory:')
-DataMapper.finalize
-DataMapper.auto_migrate!
-
 
 downloader = DownloadService.new
 splitter = SplitterService.new
