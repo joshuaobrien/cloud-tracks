@@ -9,20 +9,18 @@ require './config/environments'
 
 load 'lib/services/download_service.rb'
 load 'lib/services/splitter_service.rb'
+load 'lib/track.rb'
 
 downloader = DownloadService.new
 splitter = SplitterService.new
 
-get '/' do
-    system "youtube-dl --skip-download -j https://www.youtube.com/watch?v=MOFG0dtkGRk"
-    "you've happened upon a terrible fate, haven't you?\n"
-end
-
 post '/real/download_tape' do
     content_type :json
 
-    puts params[:url]
-    raw_video_info = `youtube-dl https://www.youtube.com/watch?v=MOFG0dtkGRk`
+    url = params[:url].to_s
+
+    raw_video_info = `youtube-dl --skip-download -j #{url}`
+    json_video_info = JSON.parse(raw_video_info)
 end
 
 post '/test/download' do
