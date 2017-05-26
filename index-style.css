@@ -5,46 +5,95 @@
 	margin: auto;
   	position: absolute;
   	top: 0; left: 0; bottom: 0; right: 0;
-	background-color: green;
+	/*background-color: green;*/
 }
 
 #content {
 	margin: auto;
 	position: relative;
-	min-width: 860px;
-	width: 50%;
-	background-color: blue;
+	max-width: 620px;
+	min-width: 520px;
+	/*background-color: blue;*/
 }
 
 #content > div {
 	display: block;
+	box-sizing: border-box;
 }
 
 #logo-container {
-	width: 250px;
-	height: 250px;
+	width: 200px;
+	height: 150px;
 	margin: auto;
-	background-color: pink;
+	/*background-color: pink;*/
+}
+
+#logo {
+	width: 200px;
+}
+
+#title {
+	text-align: center;
+	margin: 0 auto;
+	font-size: 22px;
+	letter-spacing: 24px;
+	color: #282828;
+	text-indent: 52px;
+	opacity: 0.8;
+}
+
+#glow-dot {
+	width: 1px;
+	height: 1px;
+	margin: auto;
+	background-color: white;
+	box-shadow: 0 0 300px 300px white;
+	z-index: -1;
 }
 
 #paste-box-container {
-	margin-top: 100px;
+	margin-top: 50px;
 	width: 100%;
-	height: 50px;
-	background-color: cyan;
+	height: 40px;
+	/*background-color: cyan;*/
+	background-color: #fafafa;
+
+	border-radius: 2px;
+	border-width: 2px;
+	border-style: solid;
+	border-color: pink;
+
+	box-shadow: 0 10px 20px -10px lightgray;
+}
+#paste-box-container:hover {
+	/*border-width: 1px;*/
+	/*box-shadow: 0 0 3px 1px lightpink;*/
+	box-shadow: 0 8px 20px -10px gray;
 }
 
 #button-container {
 	margin: 0 auto;
-	margin-top: 16px;
+	margin-top: 24px;
 	text-align: center;
 }
 
 .button {
+	box-sizing: border-box;
 	display: inline-block;
-	width: 200px;
-	height: 50px;
-	background-color: yellow;
+	width: 150px;
+	height: 45px;
+	/*background-color: yellow;*/
 	margin-left: 4px;
 	margin-right: 4px;
+	background-color: #fcfcfc;
+
+	color: #282828;
+	font-size: 12px;
+	line-height: 45px;
+	letter-spacing: 4px;
+}	
+.button:hover {
+	/*margin-left: 5px;*/
+	border-width: 1px;
+	box-shadow: 0 0 2px 0 #737373;
 }
