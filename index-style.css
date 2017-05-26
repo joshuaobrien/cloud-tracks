@@ -1,11 +1,12 @@
 #content-row {
 	width: 100%;
-	min-height: 540px;
-	height: 50%;
+	/*min-height: 540px;*/
+	/*height: 50%;*/
 	margin: auto;
-  	position: absolute;
+	margin-top: 10%;
+  	position: relative;
   	top: 0; left: 0; bottom: 0; right: 0;
-	/*background-color: green;*/
+	/*background-color: blue;*/
 }
 
 #content {
@@ -22,20 +23,21 @@
 }
 
 #logo-container {
-	width: 200px;
-	height: 150px;
+	width: 150px;
+	height: 100px;
 	margin: auto;
 	/*background-color: pink;*/
 }
 
 #logo {
-	width: 200px;
+	width: 150px;
 }
 
 #title {
 	text-align: center;
 	margin: 0 auto;
-	font-size: 22px;
+	margin-top: 20px;
+	font-size: 18px;
 	letter-spacing: 24px;
 	color: #282828;
 	text-indent: 52px;
@@ -52,11 +54,24 @@
 }
 
 #paste-box-container {
-	margin-top: 50px;
+	margin-top: 30px;
 	width: 100%;
 	height: 40px;
-	/*background-color: cyan;*/
+}
+
+input {
+	width: 97%;
+	height: 90%;
+	padding-left: 12px;
+	outline: 0;
+	border: none;
+	box-shadow: none;
+
 	background-color: #fafafa;
+
+	font-size: 14px;
+	letter-spacing: 1px;
+	color: #282828;
 
 	border-radius: 2px;
 	border-width: 2px;
@@ -65,35 +80,39 @@
 
 	box-shadow: 0 10px 20px -10px lightgray;
 }
-#paste-box-container:hover {
-	/*border-width: 1px;*/
-	/*box-shadow: 0 0 3px 1px lightpink;*/
+
+input:hover {
+	box-shadow: 0 8px 20px -10px gray;
+}
+
+input:focus {
+	outline: 0;
+	border-color: pink;
 	box-shadow: 0 8px 20px -10px gray;
 }
 
 #button-container {
-	margin: 0 auto;
-	margin-top: 24px;
-	text-align: center;
+	float: right;
+	position: absolute;
+	right: 5px;
+	bottom: 4px;
+	text-align: right;
 }
 
-.button {
-	box-sizing: border-box;
-	display: inline-block;
-	width: 150px;
-	height: 45px;
-	/*background-color: yellow;*/
-	margin-left: 4px;
-	margin-right: 4px;
-	background-color: #fcfcfc;
+.icon-button {
+	/*background-color: red;*/
+	/*background-color: #fafafa;*/
+	padding-right: 8px;
+	padding-left: 24px;
+}
 
-	color: #282828;
-	font-size: 12px;
-	line-height: 45px;
-	letter-spacing: 4px;
-}	
-.button:hover {
-	/*margin-left: 5px;*/
-	border-width: 1px;
-	box-shadow: 0 0 2px 0 #737373;
+.icon-button > img {
+	/*background-color: blue;*/
+	padding: 4px;
+	opacity: 0.5;
+}
+
+.icon-button > img:hover {
+	cursor: pointer;
+	opacity: 0.75;
 }

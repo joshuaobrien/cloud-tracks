@@ -4,6 +4,7 @@
 	<title>Cloud Tracks</title>
 	<link rel="stylesheet" type="text/css" href="reset.css">
 	<link rel="stylesheet" type="text/css" href="index-style.css">
+	<script src="https://unpkg.com/vue"></script>
 </head>
 
 <body>
@@ -16,26 +17,29 @@
 			</div>
 
 			<div id="title">
-				cloud tracks
+				{{message}}
 			</div>
 
 			<div id="glow-dot">
 			</div>
 
 			<div id="paste-box-container">
+				<input v-model="userLink" @focus="highlightFocus(true)" @blur="highlightFocus(false)" :style="highlight">
+				<div id="button-container">
+					<!--<div class="button" id="go-button">
+						\\ okay
+					</div>-->
+					<div class="icon-button" id="download-button" :style="highlight">
+						<img src="assets/res/cloud-download.png">
+					</div>
+				</div>
 			</div>
 
-			<div id="button-container">
-				<div class="button" id="paste-button">
-					\\ paste
-				</div>
-				<div class="button" id="go-button">
-					\\ okay
-				</div>
-			</div>
+			
 			
 		</div>
 	</div>
 </div>
 </body>
+<script src="index-script.js"></script>
 </html>
