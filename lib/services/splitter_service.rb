@@ -1,4 +1,6 @@
 load 'lib/track.rb'
+load 'lib/playlist_track.rb'
+load 'lib/playlist.rb'
 
 class SplitterService
     def initialzie
@@ -6,6 +8,12 @@ class SplitterService
     end
 
     def split_tape(source, metadata)
+
+        new_playlist_id = Playlist.maximum(:playlist_id).to_i
+        new_playlist_id = new_playlist_id.nil? ? 0 : new_playlist_id + 1
+
+        Playlist.create(playlist_id: new_playlist_id, user_id: 0, name: metadata['fulltitle'])
+
 
         metadata['chapters'].each do |track|
             artist, title = track['title'].split('-')[0], track['title'].split('-')[1]
@@ -33,7 +41,10 @@ class SplitterService
             puts ffmpeg_call
             system ffmpeg_call
 
+
+
             track = Track.create(name: title, artist: artist, duration: duration_in_seconds, filepath: path+"/"+track['title']+".m4a")
+            PlaylistTrack.create(playlist_id: new_playlist_id, track_id: track.id)
         end
 
         return true

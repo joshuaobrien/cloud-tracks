@@ -1,9 +1,0 @@
-Home Page
-    User pastes a link
-    async loading begins on playlist title, art
-        title replaces '#title'
-        art replaces '#logo'
-
-    User presses okay
-    content shifts upwards and brings with it the container for the download functionality
-        loading spinner displays and controls are greyed

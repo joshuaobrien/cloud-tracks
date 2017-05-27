@@ -1,45 +1,35 @@
-#window {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-}
+<template>
+    <li>
+        <div class="playlist-item">
+            <div class="playlist-thumbnail-container">
+                <a href="#tracks">
+                    <img class="thumbnail" src="../assets/thumbnail-placeholder.jpg" href="#okay">
+                </a>
 
-#content-col {
-    position: relative;
-    margin: 0 auto;
-    padding-left: 100px;
-    padding-right: 100px;
-    margin-top: 100px;
-    /*background-color: green;*/
-    max-width: 1130px;
-    min-width: 750px;
-}
+                <a class="pp-button" href="#play">
+                    <img src="../assets/play-large.png">
+                </a>
+            </div>
 
-#content-header {
-    height: 150px;
-    background-color: #ececec;
-    border-radius: 2px;
-    text-align: center;
-    padding-top: 20px;
-}
+            <p class="playlist-title">{{playlist.title}}</p>
+            <p class="playlist-artist">{{playlist.artist}}</P>
+        </div>
+    </li>
+</template>
 
-h1 {
-    font-size: 72px;
-    color: #282828;
+<script>
+export default {
+  name: 'playlist-item',
+  props: ['playlist'],
+  data () {
+    return {
+    }
+  }
 }
+</script>
 
-#content {
-    position: relative;
-    margin: 0 auto;
-    margin-top: 25px;
-    /*background-color: blue;*/
-    background-color: #f2f2f2;
-}
-
-li {
-    display: inline-block;
-}
-
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped>
 .playlist-item {
     margin: 12px;
     height: 210px;
@@ -108,3 +98,4 @@ li {
     font-size: 14px;
     opacity: 0.8;
 }
+</style>
