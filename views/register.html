@@ -25,26 +25,27 @@
                 <div id="glow-dot">
                 </div>
 
-                <div id="inputs-container">
-                    <div class="reg-input">
-                        <p>username</p>
-                        <input type="text" id="user-box" v-model="userName">
+                <form @submit.prevent="newUserSubmit">
+                    <div id="inputs-container">
+                        <div class="reg-input">
+                            <p>username</p>
+                            <input type="text" spellcheck="false" id="user-box" v-model="userName">
+                        </div>
+                        <div class="reg-input">
+                            <p>password</p>
+                            <input type="password" id="pass-box" v-model="userPass">
+                        </div>
+                        <div class="reg-input">
+                            <p>confirm password</p>
+                            <input type="password" id="pass-confirm-box" v-model="userPassConfirm">
+                        </div>
                     </div>
-                    <div class="reg-input">
-                        <p>password</p>
-                        <input type="password" id="pass-box" v-model="userPass">
-                    </div>
-                    <div class="reg-input">
-                        <p>confirm password</p>
-                        <input type="password" id="pass-confirm-box" v-model="userPassConfirm">
-                    </div>
-                </div>
 
-                <div id="button-container">
-                    <div class="button" id="go-button" @click="submit">
-                        \\ okay
+                    <div id="button-container">
+                        <input type="submit" value="\\ okay" class="button" id="go-button ">
+                        </input>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>

@@ -2,36 +2,36 @@ new Vue({
     el: '#content',
 
     data: {
-        userName: "testuser",
-        userPass: "password1",
-        userPassConfirm: "password1"
+        userName: "",
+        userPass: "",
+        userPassConfirm: ""
     },
 
     methods: {
-        submit: function() {
+        newUserSubmit: function() {
             if (this.userName === "") {
                 alert("Please enter a username");
                 return;
             }
 
             if (this.userPass === "") {
-                alert("Please enter a password")
+                alert("Please enter a password");
                 return;
             }
 
             if (this.userPass !== this.userPassConfirm) {
-                alert("Passwords do not match")
+                alert("Passwords do not match");
                 return;
             }
 
             let newUser = {
                 username: this.userName,
                 password: this.userPass
-            }
-            this.$http.post('localhost:4567/test/create_user', newUser)
-                .then(function(response) {
-                    alert("It worked?");
-                });
+            };
+
+            this.$http.post('localhost:4567/test/create_user', newUser, {
+                emulateJSON: true
+            })
         }
     }
 })

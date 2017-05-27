@@ -1,78 +1,52 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    addressable (2.5.1)
-      public_suffix (~> 2.0, >= 2.0.2)
+    activemodel (5.1.1)
+      activesupport (= 5.1.1)
+    activerecord (5.1.1)
+      activemodel (= 5.1.1)
+      activesupport (= 5.1.1)
+      arel (~> 8.0)
+    activesupport (5.1.1)
+      concurrent-ruby (~> 1.0, >= 1.0.2)
+      i18n (~> 0.7)
+      minitest (~> 5.1)
+      tzinfo (~> 1.1)
+    arel (8.0.0)
     backports (3.8.0)
     bcrypt (3.1.11)
-    bcrypt-ruby (3.1.5)
-      bcrypt (>= 3.1.3)
     climate_control (0.1.0)
     cocaine (0.5.8)
       climate_control (>= 0.0.3, < 1.0)
-    data_mapper (1.2.0)
-      dm-aggregates (~> 1.2.0)
-      dm-constraints (~> 1.2.0)
-      dm-core (~> 1.2.0)
-      dm-migrations (~> 1.2.0)
-      dm-serializer (~> 1.2.0)
-      dm-timestamps (~> 1.2.0)
-      dm-transactions (~> 1.2.0)
-      dm-types (~> 1.2.0)
-      dm-validations (~> 1.2.0)
-    data_objects (0.10.17)
-      addressable (~> 2.1)
-    dm-aggregates (1.2.0)
-      dm-core (~> 1.2.0)
-    dm-constraints (1.2.0)
-      dm-core (~> 1.2.0)
-    dm-core (1.2.1)
-      addressable (~> 2.3)
-    dm-do-adapter (1.2.0)
-      data_objects (~> 0.10.6)
-      dm-core (~> 1.2.0)
-    dm-migrations (1.2.0)
-      dm-core (~> 1.2.0)
-    dm-serializer (1.2.2)
-      dm-core (~> 1.2.0)
-      fastercsv (~> 1.5)
-      json (~> 1.6)
-      json_pure (~> 1.6)
-      multi_json (~> 1.0)
-    dm-sqlite-adapter (1.2.0)
-      dm-do-adapter (~> 1.2.0)
-      do_sqlite3 (~> 0.10.6)
-    dm-timestamps (1.2.0)
-      dm-core (~> 1.2.0)
-    dm-transactions (1.2.0)
-      dm-core (~> 1.2.0)
-    dm-types (1.2.2)
-      bcrypt-ruby (~> 3.0)
-      dm-core (~> 1.2.0)
-      fastercsv (~> 1.5)
-      json (~> 1.6)
-      multi_json (~> 1.0)
-      stringex (~> 1.4)
-      uuidtools (~> 2.1)
-    dm-validations (1.2.0)
-      dm-core (~> 1.2.0)
-    do_sqlite3 (0.10.17)
-      data_objects (= 0.10.17)
-    fastercsv (1.5.5)
-    json (1.8.6)
-    json_pure (1.8.6)
+    concurrent-ruby (1.0.5)
+    i18n (0.8.1)
+    minitest (5.10.2)
+    mp4info (1.7.3)
     multi_json (1.12.1)
     mustermann (1.0.0)
-    public_suffix (2.0.5)
+    open4 (1.3.4)
+    pg (0.20.0)
     rack (2.0.2)
     rack-protection (2.0.0)
       rack
     rake (12.0.0)
+    riff (0.3)
+    ruby-mp3info (0.8.10)
+    scissor (0.6.0)
+      mp4info (= 1.7.3)
+      open4 (>= 1.3.0)
+      riff (<= 0.3.0)
+      ruby-mp3info
+      streamio-ffmpeg
+      tempdir
     sinatra (2.0.0)
       mustermann (~> 1.0)
       rack (~> 2.0)
       rack-protection (= 2.0.0)
       tilt (~> 2.0)
+    sinatra-activerecord (2.0.13)
+      activerecord (>= 3.2)
+      sinatra (>= 1.0)
     sinatra-contrib (2.0.0)
       backports (>= 2.0)
       multi_json
@@ -80,9 +54,13 @@ GEM
       rack-protection (= 2.0.0)
       sinatra (= 2.0.0)
       tilt (>= 1.3, < 3)
-    stringex (1.5.1)
+    streamio-ffmpeg (3.0.2)
+      multi_json (~> 1.8)
+    tempdir (0.0.1)
+    thread_safe (0.3.6)
     tilt (2.0.7)
-    uuidtools (2.1.5)
+    tzinfo (1.2.3)
+      thread_safe (~> 0.1)
     youtube-dl.rb (0.3.1.2016.09.11.1)
       cocaine (>= 0.5.4)
 
@@ -90,17 +68,15 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activerecord
   bcrypt (~> 3.1.7)
-  data_mapper
-  dm-aggregates
-  dm-core
-  dm-migrations
-  dm-sqlite-adapter
-  dm-timestamps
-  dm-validations
+  pg
   rake
+  scissor
   sinatra (>= 1.0)
+  sinatra-activerecord
   sinatra-contrib
+  streamio-ffmpeg
   youtube-dl.rb
 
 BUNDLED WITH
