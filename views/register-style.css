@@ -12,6 +12,7 @@
     max-width: 620px;
     min-width: 520px;
     /*background-color: blue;*/
+    text-align: center;
 }
 
 #content>div {
@@ -37,7 +38,7 @@
     font-size: 18px;
     letter-spacing: 24px;
     color: #282828;
-    text-indent: 52px;
+    text-indent: 36px;
     opacity: 0.8;
 }
 
@@ -50,15 +51,14 @@
     z-index: -1;
 }
 
-#paste-box-container {
-    margin-top: 30px;
-    width: 100%;
-    height: 40px;
+#inputs-container {
+    margin-top: 40px;
 }
 
 input {
-    width: 97%;
-    height: 90%;
+    margin-top: 12px;
+    width: 50%;
+    height: 32px;
     padding-left: 12px;
     outline: 0;
     border: none;
@@ -85,30 +85,30 @@ input:focus {
     background-color: white;
 }
 
-input:focus~#button-container {
-    background-color: white;
-}
-
 #button-container {
-    float: right;
-    position: absolute;
-    right: 5px;
-    bottom: 4px;
-    text-align: right;
-    background-color: #fafafa;
+    margin: 0 auto;
+    margin-top: 24px;
+    text-align: center;
 }
 
-.icon-button {
-    padding-right: 8px;
-    padding-left: 12px;
+.button {
+    box-sizing: border-box;
+    display: inline-block;
+    width: 150px;
+    height: 45px;
+    /*background-color: yellow;*/
+    margin-left: 4px;
+    margin-right: 4px;
+    background-color: #fcfcfc;
+    color: #282828;
+    font-size: 12px;
+    line-height: 45px;
+    letter-spacing: 4px;
 }
 
-.icon-button>img {
-    padding: 4px;
-    opacity: 0.5;
-}
-
-.icon-button>img:hover {
+.button:hover {
+    /*margin-left: 5px;*/
+    border-width: 1px;
+    box-shadow: 0 0 2px 0 #737373;
     cursor: pointer;
-    opacity: 0.75;
 }
