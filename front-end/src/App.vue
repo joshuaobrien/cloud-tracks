@@ -98,8 +98,7 @@ a {
 	text-decoration: none;
 }
 
-#window {
-	width: 100%;
+#app {
 	/*background-color: red;*/
 	background-image: url('assets/tile-light.jpg');
 	background-repeat: repeat;
