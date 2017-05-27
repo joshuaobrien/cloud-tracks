@@ -71,13 +71,25 @@ post '/test/create_user' do
 
         if user.save
             status 200
-            json 'ok'
         else
             status 201
-            json 'not ok'
         end
         
     end
+end
+
+post '/test/login' do
+    unless params[:username].nil? || params[:password].nil?
+
+        if User.find_by(username: params[:username]).try(:authenticate, params[:password])
+            status 201
+            json 'Success'
+        else
+            status 201
+            json 'Failure'
+        end
+    end
+
 end
 
 options "*" do
