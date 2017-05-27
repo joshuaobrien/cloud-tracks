@@ -11,6 +11,12 @@
       <button type="button">
         <router-link to="/register">Register</router-link>
       </button>
+			<button type="button">
+        <router-link to="/playlists">Playlists</router-link>
+      </button>
+			<button type="button">
+        <router-link to="/tracks">Tracks</router-link>
+      </button>
     </div>
 
     <router-view></router-view>
@@ -93,9 +99,7 @@ a {
 }
 
 #window {
-	position: absolute;
 	width: 100%;
-	min-height: 100%;
 	/*background-color: red;*/
 	background-image: url('assets/tile-light.jpg');
 	background-repeat: repeat;

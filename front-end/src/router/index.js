@@ -3,6 +3,8 @@ import Router from 'vue-router'
 import Landing from '@/components/Landing'
 import Register from '@/components/Register'
 import Login from '@/components/Login'
+import Playlists from '@/components/Playlists'
+import Tracks from '@/components/Tracks'
 
 Vue.use(Router)
 
@@ -22,6 +24,16 @@ export default new Router({
             path: '/login',
             name: 'Login',
             component: Login
+        },
+        {
+            path: '/playlists',
+            name: 'Playlists',
+            component: Playlists
+        },
+        {
+            path: '/tracks',
+            name: 'Tracks',
+            component: Tracks
         }
     ]
 })

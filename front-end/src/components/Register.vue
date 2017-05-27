@@ -69,7 +69,7 @@ export default {
 #content-row {
     width: 100%;
     margin: auto;
-    margin-top: 200px;
+    margin-top: 175px;
     position: relative;
     /*background-color: green;*/
 }
@@ -99,11 +99,7 @@ export default {
 form {
     display: inline-block;
     width: 300px;
-    /*background-color: red;*/
-}
-
-#inputs-container {
-    margin-top: 40px;
+    margin-top: 30px;
     /*background-color: red;*/
 }
 

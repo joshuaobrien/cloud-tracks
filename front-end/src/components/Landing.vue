@@ -50,7 +50,7 @@ export default {
   #content-row {
     width: 100%;
     margin: auto;
-    margin-top: 200px;
+    margin-top: 175px;
     position: relative;
     /*background-color: green;*/
   }
