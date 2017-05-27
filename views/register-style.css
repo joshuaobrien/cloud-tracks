@@ -1,0 +1,114 @@
+#content-row {
+    width: 100%;
+    margin: auto;
+    margin-top: 200px;
+    position: relative;
+    /*background-color: green;*/
+}
+
+#content {
+    margin: auto;
+    position: relative;
+    max-width: 620px;
+    min-width: 520px;
+    /*background-color: blue;*/
+    text-align: center;
+}
+
+#content>div {
+    display: block;
+    box-sizing: border-box;
+}
+
+#logo-container {
+    width: 150px;
+    height: 100px;
+    margin: auto;
+    /*background-color: pink;*/
+}
+
+#logo {
+    width: 150px;
+}
+
+#title {
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 20px;
+    font-size: 18px;
+    letter-spacing: 24px;
+    color: #282828;
+    text-indent: 36px;
+    opacity: 0.8;
+}
+
+#glow-dot {
+    width: 1px;
+    height: 1px;
+    margin: auto;
+    background-color: white;
+    box-shadow: 0 0 300px 300px white;
+    z-index: -1;
+}
+
+#inputs-container {
+    margin-top: 40px;
+}
+
+input {
+    margin-top: 12px;
+    width: 50%;
+    height: 32px;
+    padding-left: 12px;
+    outline: 0;
+    border: none;
+    box-shadow: none;
+    background-color: #fafafa;
+    font-size: 14px;
+    letter-spacing: 1px;
+    color: #525252;
+    border-radius: 2px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: pink;
+    box-shadow: 0 10px 20px -10px lightgray;
+}
+
+input:hover {
+    box-shadow: 0 8px 20px -10px gray;
+}
+
+input:focus {
+    outline: 0;
+    border-color: lightpink;
+    box-shadow: 0 8px 20px -10px gray;
+    background-color: white;
+}
+
+#button-container {
+    margin: 0 auto;
+    margin-top: 24px;
+    text-align: center;
+}
+
+.button {
+    box-sizing: border-box;
+    display: inline-block;
+    width: 150px;
+    height: 45px;
+    /*background-color: yellow;*/
+    margin-left: 4px;
+    margin-right: 4px;
+    background-color: #fcfcfc;
+    color: #282828;
+    font-size: 12px;
+    line-height: 45px;
+    letter-spacing: 4px;
+}
+
+.button:hover {
+    /*margin-left: 5px;*/
+    border-width: 1px;
+    box-shadow: 0 0 2px 0 #737373;
+    cursor: pointer;
+}

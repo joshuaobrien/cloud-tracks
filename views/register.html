@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Register</title>
+    <link rel="stylesheet" type="text/css" href="reset.css">
+    <link rel="stylesheet" type="text/css" href="register-style.css">
+    <script src="https://unpkg.com/vue"></script>
+</head>
+
+<body>
+    <div id="window">
+        <div id="content-row">
+            <div id="content">
+                <div id="logo-container">
+                    <img id="logo" src="assets/res/cloud.png">
+                </div>
+
+                <div id="title">
+                    <p>register</p>
+                </div>
+
+                <div id="glow-dot">
+                </div>
+
+                <div id="inputs-container">
+                    <input type="text" id=" user-box " v-model="userName">
+                    <input type="password" id="pass-box " v-model="userPass">
+                </div>
+
+                <div id="button-container">
+                    <div class="button" id="go-button" @click="submit">
+                        \\ okay
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="register-script.js "></script>
+
+</html>
