@@ -9,9 +9,9 @@
 #content {
     margin: auto;
     position: relative;
-    max-width: 620px;
-    min-width: 520px;
+    width: 100%;
     /*background-color: blue;*/
+    text-align: center;
 }
 
 #content>div {
@@ -37,7 +37,7 @@
     font-size: 18px;
     letter-spacing: 24px;
     color: #282828;
-    text-indent: 52px;
+    text-indent: 36px;
     opacity: 0.8;
 }
 
@@ -48,6 +48,13 @@
     background-color: white;
     box-shadow: 0 0 300px 300px white;
     z-index: -1;
+}
+
+form {
+    position: relative;
+    display: inline-block;
+    max-width: 620px;
+    min-width: 520px;
 }
 
 #paste-box-container {

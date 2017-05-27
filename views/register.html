@@ -27,18 +27,9 @@
 
                 <form @submit.prevent="newUserSubmit">
                     <div id="inputs-container">
-                        <div class="reg-input">
-                            <p>username</p>
-                            <input type="text" spellcheck="false" id="user-box" v-model="userName">
-                        </div>
-                        <div class="reg-input">
-                            <p>password</p>
-                            <input type="password" id="pass-box" v-model="userPass">
-                        </div>
-                        <div class="reg-input">
-                            <p>confirm password</p>
-                            <input type="password" id="pass-confirm-box" v-model="userPassConfirm">
-                        </div>
+                            <input class="reg-input" type="text" spellcheck="false" placeholder="username" v-model="userName">
+                            <input class="reg-input" type="password" placeholder="password" v-model="userPass">
+                            <input class="reg-input" type="password" placeholder="confirm password" v-model="userPassConfirm">
                     </div>
 
                     <div id="button-container">

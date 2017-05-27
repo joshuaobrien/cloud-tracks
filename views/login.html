@@ -28,12 +28,10 @@
                 <form @submit.prevent="loginSubmit">
                     <div id="inputs-container">
                         <div class="reg-input">
-                            <p>username</p>
-                            <input type="text" spellcheck="false" id="user-box" v-model="userName">
+                            <input type="text" spellcheck="false" id="user-box" v-model="userName" placeholder="username">
                         </div>
                         <div class="reg-input">
-                            <p>password</p>
-                            <input type="password" id="pass-box" v-model="userPass">
+                            <input type="password" id="pass-box" v-model="userPass" placeholder="password">
                         </div>
                     </div>
 

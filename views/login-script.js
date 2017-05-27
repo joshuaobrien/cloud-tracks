@@ -25,7 +25,18 @@ new Vue({
 
             this.$http.post('http://localhost:4567/test/login', loginData, {
                 emulateJSON: true
-            })
+            }).then(response => {
+                if (response.status == 201) {
+                    var responseData = response.body
+                    if (responseData == 'Success') {
+                        return;
+                    }
+                }
+                alert("Login failed");
+            }, response => {
+                // error callback
+                alert("Well cooked");
+            });
         }
     }
 })
