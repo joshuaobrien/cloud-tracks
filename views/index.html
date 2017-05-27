@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Cloud Tracks</title>
+    <link rel="stylesheet" type="text/css" href="reset.css">
+    <link rel="stylesheet" type="text/css" href="index-style.css">
+    <script src="https://unpkg.com/vue"></script>
+</head>
+
+<body>
+    <div id="window">
+        <div id="content-row">
+            <div id="content">
+
+                <div id="logo-container">
+                    <img id="logo" src="assets/res/cloud.png">
+                </div>
+
+                <div id="title">
+                    <p>{{message}}</p>
+                </div>
+
+                <div id="glow-dot">
+                </div>
+
+                <div id="paste-box-container">
+                    <input type="text" spellcheck="false" v-model="userLink">
+                    <div id="button-container">
+                        <div class="icon-button" id="download-button" @click="download">
+                            <img src="assets/res/cloud-download.png">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+<script src="index-script.js"></script>
+
+</html>
