@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20170527150938) do
     t.string "name"
   end
 
-  create_table "playlist_track", force: :cascade do |t|
+  create_table "playlist_tracks", force: :cascade do |t|
     t.bigint "playlist_id"
     t.bigint "track_id"
   end

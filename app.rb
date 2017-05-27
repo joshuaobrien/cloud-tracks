@@ -12,6 +12,7 @@ load 'lib/services/download_service.rb'
 load 'lib/services/splitter_service.rb'
 load 'lib/track.rb'
 load 'lib/user.rb'
+load 'lib/playlist_track.rb'
 
 use Rack::Logger
 
@@ -90,6 +91,26 @@ post '/test/login' do
         end
     end
 
+end
+
+get '/test/test' do
+
+    pp PlaylistTrack.where(playlist_id: 1)
+    pp Track.where(id:279)
+end
+
+get '/test/playlist/:id' do
+
+    tracks = PlaylistTrack.where(playlist_id: params[:id])
+
+    tracks_data = []
+
+    tracks.each do |track|
+        tracks_data.push Track.where(id: track.track_id)
+    end
+
+    status 200
+    json tracks_data
 end
 
 options "*" do
