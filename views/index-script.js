@@ -6,8 +6,15 @@ new Vue({
     },
 
     methods: {
-        download: function() {
-            alert("TEST: " + this.userLink);
+        linkSubmit: function() {
+
+            let newLink = {
+                url: this.userLink
+            };
+
+            this.$http.post('http://localhost:4567/test/download', newLink, {
+                emulateJSON: true
+            })
         }
     }
 })

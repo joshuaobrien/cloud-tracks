@@ -3,12 +3,11 @@ new Vue({
 
     data: {
         userName: "",
-        userPass: "",
-        userPassConfirm: ""
+        userPass: ""
     },
 
     methods: {
-        newUserSubmit: function() {
+        loginSubmit: function() {
             if (this.userName === "") {
                 alert("Please enter a username");
                 return;
@@ -19,17 +18,12 @@ new Vue({
                 return;
             }
 
-            if (this.userPass !== this.userPassConfirm) {
-                alert("Passwords do not match");
-                return;
-            }
-
-            let newUser = {
+            let loginData = {
                 username: this.userName,
                 password: this.userPass
             };
 
-            this.$http.post('http://localhost:4567/test/create_user', newUser, {
+            this.$http.post('http://localhost:4567/test/login', loginData, {
                 emulateJSON: true
             })
         }

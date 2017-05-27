@@ -9,8 +9,8 @@
 #content {
     margin: auto;
     position: relative;
-    width: 300px;
-    /*background-color: blue;   */
+    width: 100%;
+    /*background-color: blue;*/
     text-align: center;
 }
 
@@ -50,6 +50,12 @@
     z-index: -1;
 }
 
+form {
+    display: inline-block;
+    width: 300px;
+    /*background-color: red;*/
+}
+
 #inputs-container {
     margin-top: 40px;
     /*background-color: red;*/
@@ -71,7 +77,7 @@
     opacity: 0.5;
 
     position: absolute;
-    left: 2px;
+    left: 4px;
     /*background-color: green;*/
 }
 
