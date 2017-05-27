@@ -9,8 +9,8 @@
 #content {
     margin: auto;
     position: relative;
-    width: 620px;
-    /*background-color: blue;*/
+    width: 300px;
+    /*background-color: blue;   */
     text-align: center;
 }
 
@@ -52,7 +52,7 @@
 
 #inputs-container {
     margin-top: 40px;
-    margin-left: -150px;
+    /*background-color: red;*/
 }
 
 .reg-input {
@@ -61,28 +61,35 @@
 }
 
 .reg-input>p {
-    width: 150px;
-    color: #282828;
     display: inline-block;
-    font-size: 12px;
-    letter-spacing: 2px;
-    line-height: 32px;
-    left: 0;
-    text-align: right;
+    font-size: 14px;
+    letter-spacing: 1px;
+    color: #525252;
+    line-height: 36px;
+    text-align: left;
     margin-right: 16px;
+    opacity: 0.5;
+
+    position: absolute;
+    left: 2px;
+    /*background-color: green;*/
 }
 
 input {
-    width: 50%;
+    width: 100%;
     height: 32px;
     padding-left: 12px;
+    padding-right: 12px;
+    margin-left: -12px;
     outline: 0;
     border: none;
     box-shadow: none;
     background-color: #f8f8f8;
+
     font-size: 14px;
     letter-spacing: 1px;
     color: #525252;
+
     border-radius: 2px;
     border-width: 2px;
     border-style: solid;
@@ -120,9 +127,12 @@ input:focus {
     font-size: 12px;
     line-height: 45px;
     letter-spacing: 4px;
+    outline: 0;
+    border: none;
 }
 
-.button:hover {
+.button:hover,
+.button:focus {
     /*margin-left: 5px;*/
     border-width: 1px;
     box-shadow: 0 0 2px 0 #737373;
