@@ -1,5 +1,6 @@
 load 'lib/track.rb'
 load 'lib/playlist_track.rb'
+load 'lib/playlist.rb'
 
 class SplitterService
     def initialzie
@@ -8,7 +9,11 @@ class SplitterService
 
     def split_tape(source, metadata)
 
-        new_playlist_id = PlaylistTrack.maximum(:playlist_id).to_i + 1
+        new_playlist_id = Playlist.maximum(:playlist_id).to_i
+        new_playlist_id = new_playlist_id.nil? ? 0 : new_playlist_id + 1
+
+        Playlist.create(playlist_id: new_playlist_id, user_id: 0, name: metadata['fulltitle'])
+
 
         metadata['chapters'].each do |track|
             artist, title = track['title'].split('-')[0], track['title'].split('-')[1]
