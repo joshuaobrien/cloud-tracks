@@ -5,6 +5,7 @@ require 'youtube-dl.rb'
 require 'pp'
 require 'sinatra/activerecord'
 require './config/environments'
+require 'sinatra/cross_origin'
 
 
 load 'lib/services/download_service.rb'
@@ -12,14 +13,29 @@ load 'lib/services/splitter_service.rb'
 load 'lib/track.rb'
 load 'lib/user.rb'
 
+use Rack::Logger
+
+helpers do
+    def logger
+        request.logger
+    end
+end
+
+configure do
+    enable :cross_origin
+end
+
+before do
+    response.headers['Access-Control-Allow-Origin'] = '*'
+end
+
 downloader = DownloadService.new
 splitter = SplitterService.new
 
 
+
 #track = Track.create(name: title, artist: artist, duration: duration_in_seconds, filepath: path+"/"+track['title']+".m4a")
 #user = User.create(username: "hey", password: "datstick")
-
-
 
 post '/real/download_tape' do
     content_type :json
@@ -45,11 +61,13 @@ post '/test/download' do
 end
 
 post '/test/create_user' do
+
     unless params[:username].nil? || params[:password].nil?
 
         user = User.new
         user.username = params[:username]
         user.password = params[:password]
+
 
         if user.save
             status 200
@@ -61,3 +79,11 @@ post '/test/create_user' do
         
     end
 end
+
+options "*" do
+    response.headers["Allow"] = "GET, POST, OPTIONS"
+    response.headers["Access-Control-Allow-Headers"] = "Authorization, Content-Type, Accept, X-User-Email, X-Auth-Token"
+    response.headers["Access-Control-Allow-Origin"] = "*"
+    200
+end
+
