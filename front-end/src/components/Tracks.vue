@@ -32,6 +32,35 @@ export default {
   },
   components: {
       TrackItem
+  },
+  methods: {
+      fetchTracks() {
+            // GET /someUrl
+            this.$http.get('http://localhost:4567/test/playlist/idgoeshere', {
+
+                // use before callback
+                before(request) {
+
+                // abort previous request, if exists
+                if (this.previousRequest) {
+                    this.previousRequest.abort();
+                }
+
+                // set previous request on Vue instance
+                this.previousRequest = request;
+                }
+
+            }).then(response => {
+                // success callback
+                console.log(response.json());
+            }, response => {
+                // error callback
+                console.log(">> GET Request failed :(")
+            });
+      }
+  },
+  created: function() {
+      this.fetchTracks();
   }
 }
 </script>

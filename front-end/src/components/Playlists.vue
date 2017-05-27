@@ -32,6 +32,10 @@ export default {
   },
   components: {
       PlaylistItem
+  },
+  methods: {
+  },
+  created: function() {
   }
 }
 </script>
