@@ -2,9 +2,9 @@ new Vue({
     el: '#content',
 
     data: {
-        userName: "",
-        userPass: "",
-        userPassConfirm: ""
+        userName: "testuser",
+        userPass: "password1",
+        userPassConfirm: "password1"
     },
 
     methods: {
@@ -19,11 +19,19 @@ new Vue({
                 return;
             }
 
-            if (this.userPass === this.userPassConfirm) {
-                alert("Username: " + this.userName + "\nPassword: " + this.userPass);
-            } else {
+            if (this.userPass !== this.userPassConfirm) {
                 alert("Passwords do not match")
+                return;
             }
+
+            let newUser = {
+                username: this.userName,
+                password: this.userPass
+            }
+            this.$http.post('localhost:4567/test/create_user', newUser)
+                .then(function(response) {
+                    alert("It worked?");
+                });
         }
     }
 })
