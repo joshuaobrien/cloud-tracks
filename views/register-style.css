@@ -9,8 +9,7 @@
 #content {
     margin: auto;
     position: relative;
-    max-width: 620px;
-    min-width: 520px;
+    width: 620px;
     /*background-color: blue;*/
     text-align: center;
 }
@@ -53,10 +52,27 @@
 
 #inputs-container {
     margin-top: 40px;
+    margin-left: -150px;
+}
+
+.reg-input {
+    margin-top: 12px;
+    position: relative;
+}
+
+.reg-input>p {
+    width: 150px;
+    color: #282828;
+    display: inline-block;
+    font-size: 12px;
+    letter-spacing: 2px;
+    line-height: 32px;
+    left: 0;
+    text-align: right;
+    margin-right: 16px;
 }
 
 input {
-    margin-top: 12px;
     width: 50%;
     height: 32px;
     padding-left: 12px;

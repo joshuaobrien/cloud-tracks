@@ -3,12 +3,27 @@ new Vue({
 
     data: {
         userName: "",
-        userPass: ""
+        userPass: "",
+        userPassConfirm: ""
     },
 
     methods: {
         submit: function() {
-            alert("Username: " + this.userName + "\nPassword: " + this.userPass);
+            if (this.userName === "") {
+                alert("Please enter a username");
+                return;
+            }
+
+            if (this.userPass === "") {
+                alert("Please enter a password")
+                return;
+            }
+
+            if (this.userPass === this.userPassConfirm) {
+                alert("Username: " + this.userName + "\nPassword: " + this.userPass);
+            } else {
+                alert("Passwords do not match")
+            }
         }
     }
 })

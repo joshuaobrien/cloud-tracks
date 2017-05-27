@@ -24,8 +24,18 @@
                 </div>
 
                 <div id="inputs-container">
-                    <input type="text" id=" user-box " v-model="userName">
-                    <input type="password" id="pass-box " v-model="userPass">
+                    <div class="reg-input">
+                        <p>username</p>
+                        <input type="text" id="user-box" v-model="userName">
+                    </div>
+                    <div class="reg-input">
+                        <p>password</p>
+                        <input type="password" id="pass-box" v-model="userPass">
+                    </div>
+                    <div class="reg-input">
+                        <p>confirm password</p>
+                        <input type="password" id="pass-confirm-box" v-model="userPassConfirm">
+                    </div>
                 </div>
 
                 <div id="button-container">

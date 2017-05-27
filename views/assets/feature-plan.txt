@@ -13,4 +13,7 @@ Home Page:
         This preview will occur as:
             the title of above the pastebox changes to the playlist title
             the cloud logo changes to a thumbnail from the playlist
+
+localhost:4567/test/create_user
+
             
