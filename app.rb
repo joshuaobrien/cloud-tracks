@@ -55,7 +55,7 @@ post '/test/create_user' do
             status 200
             json 'ok'
         else
-            status 400
+            status 201
             json 'not ok'
         end
         
