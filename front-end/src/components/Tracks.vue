@@ -1,5 +1,6 @@
 <template>
     <div id="content-col">
+        <glow></glow>
         <div id="content-header">
             <h1>tracks</h1>
         </div>
@@ -15,6 +16,7 @@
 
 <script>
 import TrackItem from './TrackItem.vue'
+import Glow from './Glow.vue'
 export default {
   name: 'tracks',
   data () {
@@ -31,12 +33,13 @@ export default {
     }
   },
   components: {
-      TrackItem
+      TrackItem,
+      Glow
   },
   methods: {
       fetchTracks() {
             // GET /someUrl
-            this.$http.get('http://localhost:4567/test/playlist/idgoeshere', {
+            this.$http.get('http://localhost:4567/test/playlist/1', {
 
                 // use before callback
                 before(request) {
@@ -52,7 +55,9 @@ export default {
 
             }).then(response => {
                 // success callback
+                console.log(response.body);
                 console.log(response.json());
+        
             }, response => {
                 // error callback
                 console.log(">> GET Request failed :(")
@@ -78,7 +83,6 @@ export default {
 
 #content-header {
     height: 60px;
-    background-color: #ececec;
     border-radius: 2px;
     text-align: center;
     padding-top: 20px;
