@@ -4,6 +4,7 @@ class Playlists< ActiveRecord::Migration[5.1]
       p.bigint :playlist_id
       p.bigint :user_id
       p.string :name
+      p.string :thumbnail_path
     end
   end
 end

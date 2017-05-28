@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20170527163146) do
     t.bigint "playlist_id"
     t.bigint "user_id"
     t.string "name"
+    t.string "thumbnail_path"
   end
 
   create_table "tracks", force: :cascade do |t|
