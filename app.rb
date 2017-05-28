@@ -116,7 +116,7 @@ end
 
 get '/test/playlists/:id' do
 
-    playlist = Playlist.where(playlist_id: params[:id])
+    playlist = Playlist.where(playlist_id: params[:id])[0]
 
     status 200
     json playlist
