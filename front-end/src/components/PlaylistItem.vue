@@ -2,7 +2,7 @@
     <li>
         <div class="playlist-item">
             <div class="playlist-thumbnail-container">
-                <router-link v-bind:to="'/tracks/' + playlist.id">
+                <router-link v-bind:to="'/tracks/' + playlist.playlist_id">
                     <img class="thumbnail" v-bind:src="playlist.thumbnail_path" href="#okay">
                 </router-link>
 
