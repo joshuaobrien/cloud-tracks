@@ -3,7 +3,7 @@
         <div class="playlist-item">
             <div class="playlist-thumbnail-container">
                 <a href="#tracks">
-                    <img class="thumbnail" src="../assets/thumbnail-placeholder.jpg" href="#okay">
+                    <img class="thumbnail" v-bind:src="playlist.thumbnail_path" href="#okay">
                 </a>
 
                 <a class="pp-button" href="#play">
@@ -11,8 +11,8 @@
                 </a>
             </div>
 
-            <p class="playlist-title">{{playlist.title}}</p>
-            <p class="playlist-artist">{{playlist.artist}}</P>
+            <p class="playlist-title">{{playlist.name}}</p>
+            <!--<p class="playlist-artist">{{playlist.artist}}</P>-->
         </div>
     </li>
 </template>
@@ -23,6 +23,7 @@ export default {
   props: ['playlist'],
   data () {
     return {
+        thumbnail: "static/thumbnail-placeholder.jpg"
     }
   }
 }
@@ -83,19 +84,19 @@ export default {
 
 .playlist-item>p {
     color: #282828;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.2px;
     max-width: 160px;
     max-height: 16px;
 }
 
 .playlist-title {
     margin-top: 8px;
-    font-size: 16px;
+    font-size: 13px;
 }
 
 .playlist-artist {
     margin-top: 8px;
-    font-size: 14px;
+    font-size: 12px;
     opacity: 0.8;
 }
 </style>

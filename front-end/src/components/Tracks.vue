@@ -57,11 +57,7 @@ export default {
                 // success callback
                 this.tracks = response.body;
                 let chunk = response.body;
-                var names = new Array();
-
-                chunk.forEach(function(element) {
-                    names.push(element.name)
-                }, this);
+                
                 console.log(chunk)
                 // console.log("[0].name: " + chunk[0].name)
         

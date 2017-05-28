@@ -20,15 +20,7 @@ export default {
   name: 'playlists',
   data () {
     return {
-        playlists: [
-            { id: 0, title: 'Title One', artist: 'Artist One' },
-            { id: 1, title: 'Title Two', artist: 'Artist Two' },
-            { id: 2, title: 'Title Three', artist: 'Artist Two' },
-            { id: 3, title: 'Title Four', artist: 'Artist Three' },
-            { id: 4, title: 'Title Five', artist: 'Artist Four' },
-            { id: 5, title: 'Title Six', artist: 'Artist Four' },
-            { id: 6, title: 'Title Seven', artist: 'Artist Four' }
-        ]
+        playlists: new Array()
     }
   },
   components: {
@@ -38,7 +30,7 @@ export default {
   methods: {
       fetchPlaylists() {
             // GET /someUrl
-            this.$http.get('http://localhost:4567/test/playlist/idgoeshere', {
+            this.$http.get('http://localhost:4567/test/playlists', {
 
                 // use before callback
                 before(request) {
@@ -54,7 +46,11 @@ export default {
 
             }).then(response => {
                 // success callback
-                console.log(response.json());
+                this.playlists = response.body;
+                let chunk = response.body;
+                console.log(chunk)
+                // console.log("[0].name: " + chunk[0].name)
+        
             }, response => {
                 // error callback
                 console.log(">> GET Request failed :(")

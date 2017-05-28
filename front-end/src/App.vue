@@ -24,25 +24,6 @@
 					<div class="nav-button">tracks</div>
 				</router-link></li>
 			</ul>
-      <!--<a class="help">
-        <router-link to="/">Home</router-link>
-      </a>
-
-      <a>
-        <router-link to="/login">Login</router-link>
-      </a>
-
-      <a>
-        <router-link to="/register">Register</router-link>
-      </a>
-
-			<a>
-        <router-link to="/playlists">Playlists</router-link>
-      </a>
-
-			<a>
-        <router-link to="/tracks">Tracks</router-link>
-      </a>-->
     </div>
 
     <router-view></router-view>
