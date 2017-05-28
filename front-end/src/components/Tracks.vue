@@ -21,7 +21,7 @@ export default {
   data () {
     return {
         tracks: new Array(),
-        playlist
+        playlist: {name:"tracks"}
     }
   },
   components: {
@@ -30,7 +30,7 @@ export default {
   },
   methods: {
       fetchPlaylist(id) {
-            this.$http.get('http://localhost:4567/test/playlist/' + id, {
+            this.$http.get('https://cloudtracks.sadnc.com/api/test/playlist/' + id, {
                 before(request) {
                 if (this.previousRequest) {
                     this.previousRequest.abort();
@@ -48,7 +48,7 @@ export default {
             });
       },
       fetchTracks(id) {
-            this.$http.get('http://localhost:4567/test/playlist/' + id, {
+            this.$http.get('https://cloudtracks.sadnc.com/api/test/playlist/' + id, {
                 before(request) {
                 if (this.previousRequest) {
                     this.previousRequest.abort();
@@ -68,7 +68,7 @@ export default {
   },
   created: function() {
       this.fetchTracks(this.$route.params.id);
-      this.fetchPlaylist(this.$route.params.id);
+    //   this.fetchPlaylist(this.$route.params.id);
   }
 }
 </script>
