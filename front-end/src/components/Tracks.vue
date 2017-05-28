@@ -37,9 +37,9 @@ export default {
       Glow
   },
   methods: {
-      fetchTracks() {
+      fetchTracks(id) {
             // GET /someUrl
-            this.$http.get('http://localhost:4567/test/playlist/1', {
+            this.$http.get('http://localhost:4567/test/playlist/' + id, {
 
                 // use before callback
                 before(request) {
@@ -68,7 +68,7 @@ export default {
       }
   },
   created: function() {
-      this.fetchTracks();
+      this.fetchTracks(this.$route.params.id);
   }
 }
 </script>

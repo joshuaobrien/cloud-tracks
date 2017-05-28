@@ -2,9 +2,9 @@
     <li>
         <div class="playlist-item">
             <div class="playlist-thumbnail-container">
-                <a href="#tracks">
+                <router-link v-bind:to="'/tracks/' + playlist.id">
                     <img class="thumbnail" v-bind:src="playlist.thumbnail_path" href="#okay">
-                </a>
+                </router-link>
 
                 <a class="pp-button" href="#play">
                     <img src="../assets/play-large.png">

@@ -19,10 +19,6 @@
 				<li><router-link to="/playlists">
 					<div class="nav-button">playlists</div>
 				</router-link></li>
-
-				<li><router-link to="/tracks">
-					<div class="nav-button">tracks</div>
-				</router-link></li>
 			</ul>
     </div>
 

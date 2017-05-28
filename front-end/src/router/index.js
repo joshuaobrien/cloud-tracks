@@ -31,7 +31,7 @@ export default new Router({
             component: Playlists
         },
         {
-            path: '/tracks',
+            path: '/tracks/:id',
             name: 'Tracks',
             component: Tracks
         }
