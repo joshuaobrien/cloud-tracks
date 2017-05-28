@@ -5,6 +5,7 @@ import Register from '@/components/Register'
 import Login from '@/components/Login'
 import Playlists from '@/components/Playlists'
 import Tracks from '@/components/Tracks'
+import '../../static/reset.css'
 
 Vue.use(Router)
 

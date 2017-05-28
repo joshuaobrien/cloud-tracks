@@ -1,7 +1,7 @@
 <template>
     <div id="content-col">
         <div id="content-header">
-            <h1>tracks</h1>
+            <h1>{{playlist.name}}</h1>
         </div>
         <glow></glow>
         <div id="content">
@@ -21,15 +21,7 @@ export default {
   data () {
     return {
         tracks: new Array(),
-        // tracks: [
-        //     { id: 0, title: 'Track One'},
-        //     { id: 1, title: 'Track Two'},
-        //     { id: 2, title: 'Track Three'},
-        //     { id: 3, title: 'Track Four'},
-        //     { id: 4, title: 'Track Five'},
-        //     { id: 5, title: 'Track Six'},
-        //     { id: 6, title: 'Track Seven'}
-        // ]
+        playlist
     }
   },
   components: {
@@ -37,30 +29,37 @@ export default {
       Glow
   },
   methods: {
-      fetchTracks(id) {
-            // GET /someUrl
+      fetchPlaylist(id) {
             this.$http.get('http://localhost:4567/test/playlist/' + id, {
-
-                // use before callback
                 before(request) {
-
-                // abort previous request, if exists
                 if (this.previousRequest) {
                     this.previousRequest.abort();
                 }
-
-                // set previous request on Vue instance
                 this.previousRequest = request;
                 }
 
             }).then(response => {
-                // success callback
                 this.tracks = response.body;
                 let chunk = response.body;
-                
                 console.log(chunk)
-                // console.log("[0].name: " + chunk[0].name)
-        
+            }, response => {
+                // error callback
+                console.log(">> GET Request failed :(")
+            });
+      },
+      fetchTracks(id) {
+            this.$http.get('http://localhost:4567/test/playlist/' + id, {
+                before(request) {
+                if (this.previousRequest) {
+                    this.previousRequest.abort();
+                }
+                this.previousRequest = request;
+                }
+
+            }).then(response => {
+                this.tracks = response.body;
+                let chunk = response.body;
+                console.log(chunk)
             }, response => {
                 // error callback
                 console.log(">> GET Request failed :(")
@@ -69,6 +68,7 @@ export default {
   },
   created: function() {
       this.fetchTracks(this.$route.params.id);
+      this.fetchPlaylist(this.$route.params.id);
   }
 }
 </script>
@@ -85,8 +85,8 @@ export default {
 }
 
 #content-header {
-    height: 75px;
-    line-height: 75px;
+    height: 160px;
+    line-height: 160px;
     border-radius: 2px;
     text-align: center;
     /*background-color: red;*/
