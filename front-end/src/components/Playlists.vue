@@ -30,7 +30,7 @@ export default {
   methods: {
       fetchPlaylists() {
             // GET /someUrl
-            this.$http.get('https://cloudtracks.sadnc.com/api/test/playlists', {
+            this.$http.get('http://localhost:4567/test/playlists', {
 
                 // use before callback
                 before(request) {

@@ -58,7 +58,7 @@ export default {
                 password: this.userPass
             };
 
-            this.$http.post('https://cloudtracks.sadnc.com/api/test/create_user', newUser, {
+            this.$http.post('http://localhost:4567/test/create_user', newUser, {
                 emulateJSON: true
             })
         }
