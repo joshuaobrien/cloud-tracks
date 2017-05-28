@@ -40,7 +40,7 @@ export default {
     height: 50px;
     width: 100%;
     /*background-color: pink;*/
-    border-radius: 2px;
+    border-radius: 4px;
     border-bottom: 1px solid #ddd;
 }
 

@@ -1,7 +1,7 @@
 <template>
     <div id="content-col">
         <div id="content-header">
-            <h1>{{playlist.name}}</h1>
+            <h1>{{truncate(playlist.name)}}</h1>
             <img class="thumbnail" v-bind:src="playlist.thumbnail_path">
         </div>
         <glow></glow>
@@ -64,6 +64,12 @@ export default {
                 // error callback
                 console.log(">> Playlist Request failed :(")
             });
+      },
+      truncate(message) {
+          if (message.length > 24) {
+              message = message.substring(0, 21) + "...";
+          }
+          return message;
       }
   },
   created: function() {

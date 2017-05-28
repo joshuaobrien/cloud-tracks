@@ -11,7 +11,7 @@
                 </a>
             </div>
 
-            <p class="playlist-title">{{playlist.name}}</p>
+            <p class="playlist-title">{{truncate(playlist.name)}}</p>
             <!--<p class="playlist-artist">{{playlist.artist}}</P>-->
         </div>
     </li>
@@ -25,6 +25,14 @@ export default {
     return {
         thumbnail: "static/thumbnail-placeholder.jpg"
     }
+  },
+  methods: {
+      truncate(message) {
+          if (message.length > 16) {
+              message = message.substring(0, 16) + "...";
+          }
+          return message;
+      }
   }
 }
 </script>
