@@ -80,6 +80,7 @@ export default {
 .thumbnail {
     height: 160px;
     width: 160px;
+    object-fit: fill;
 }
 
 .playlist-item>p {
