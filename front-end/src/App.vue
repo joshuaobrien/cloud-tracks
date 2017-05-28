@@ -58,7 +58,8 @@ export default {
 <style>
 .navbar {
 	/*background-color: red;*/
-	/*background-color: #ececec;*/
+	background-color: white;
+	background-color: #fcfcfc;
 	position: fixed;
 	width: 100%;
 	top: 0;

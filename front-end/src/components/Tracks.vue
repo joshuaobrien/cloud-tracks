@@ -1,10 +1,9 @@
 <template>
     <div id="content-col">
-        <glow></glow>
         <div id="content-header">
             <h1>tracks</h1>
         </div>
-
+        <glow></glow>
         <div id="content">
             <ol>
                 <track-item v-for="item in tracks" v-bind:track="item" v-bind:key="item.id">
@@ -21,15 +20,16 @@ export default {
   name: 'tracks',
   data () {
     return {
-        tracks: [
-            { id: 0, title: 'Track One'},
-            { id: 1, title: 'Track Two'},
-            { id: 2, title: 'Track Three'},
-            { id: 3, title: 'Track Four'},
-            { id: 4, title: 'Track Five'},
-            { id: 5, title: 'Track Six'},
-            { id: 6, title: 'Track Seven'}
-        ]
+        tracks: new Array(),
+        // tracks: [
+        //     { id: 0, title: 'Track One'},
+        //     { id: 1, title: 'Track Two'},
+        //     { id: 2, title: 'Track Three'},
+        //     { id: 3, title: 'Track Four'},
+        //     { id: 4, title: 'Track Five'},
+        //     { id: 5, title: 'Track Six'},
+        //     { id: 6, title: 'Track Seven'}
+        // ]
     }
   },
   components: {
@@ -55,10 +55,16 @@ export default {
 
             }).then(response => {
                 // success callback
-                console.log(response);
-                console.log(response.body);
-                console.log(response.json());
-                
+                this.tracks = response.body;
+                let chunk = response.body;
+                var names = new Array();
+
+                chunk.forEach(function(element) {
+                    names.push(element.name)
+                }, this);
+                console.log(chunk)
+                // console.log("[0].name: " + chunk[0].name)
+        
             }, response => {
                 // error callback
                 console.log(">> GET Request failed :(")
@@ -77,16 +83,17 @@ export default {
     margin: 0 auto;
     padding-left: 100px;
     padding-right: 100px;
-    margin-top: 100px;
+    margin-top: 55px;
     /*background-color: green;*/
     width: 750px;
 }
 
 #content-header {
-    height: 60px;
+    height: 75px;
+    line-height: 75px;
     border-radius: 2px;
     text-align: center;
-    padding-top: 20px;
+    /*background-color: red;*/
 }
 
 h1 {
@@ -99,7 +106,10 @@ h1 {
     margin: 0 auto;
     margin-top: 4px;
     padding: 16px;
-    /*background-color: blue;*/
+
+    box-shadow: 0 -15px 20px -15px lightgray;
+
+    background-color: blue;
     background-color: #f2f2f2;
 }
 </style>

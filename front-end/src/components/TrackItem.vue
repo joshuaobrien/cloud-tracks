@@ -1,11 +1,12 @@
 <template>
     <li>
-        <div class="playlist-item">
+        <div class="track-item">
             <div class="pp-button" href="#play">
                 <img src="../assets/play-large.png">
             </div>
-
-            <p class="playlist-title">{{track.title}}</p>
+            <p class="artist">{{track.artist + " - "}}</p>
+            <p class="title">{{track.name}}</p>
+            <p class="duration">{{track.duration}}</p>
         </div>
     </li>
 </template>
@@ -23,7 +24,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.playlist-item {
+.track-item {
     margin-top: 2px;
     position: relative;
     height: 50px;
@@ -32,11 +33,11 @@ export default {
     border-radius: 2px;
 }
 
-.playlist-item:hover {
+.track-item:hover {
     cursor: pointer;
 }
 
-.playlist-item:hover > .pp-button {
+.track-item:hover > .pp-button {
     opacity: 1;
 }
 
@@ -62,17 +63,25 @@ export default {
     margin-top: 2.5px;
 }
 
-.playlist-item>p {
+p {
+    display: inline-block;
     color: #282828;
-    letter-spacing: 0.5px;
-    max-width: 160px;
-    max-height: 16px;
+    letter-spacing: 0.2px;
     line-height: 50px;
-    margin-left: 60px;
+    font-size: 13px;
 }
 
-.playlist-title {
-    margin-top: 8px;
-    font-size: 16px;
+.title {
+    margin-left: 16px;
+}
+
+.artist {
+    opacity: 0.55;
+    margin-left: 50px;
+}
+
+.duration {
+    float: right;
+    margin-right: 16px;
 }
 </style>

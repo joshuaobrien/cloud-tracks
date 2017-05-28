@@ -1,10 +1,9 @@
 <template>
     <div id="content-col">
-        <glow></glow>
         <div id="content-header">
             <h1>playlists</h1>
         </div>
-
+        <glow></glow>
         <div id="content">
             <ol>
                 <playlist-item v-for="item in playlists" v-bind:playlist="item" v-bind:key="item.id">
@@ -75,17 +74,18 @@ export default {
     margin: 0 auto;
     padding-left: 100px;
     padding-right: 100px;
-    margin-top: 100px;
+    margin-top: 55px;
     /*background-color: green;*/
     max-width: 1130px;
     min-width: 750px;
 }
 
 #content-header {
-    height: 60px;
+    height: 75px;
+    line-height: 75px;
     border-radius: 2px;
     text-align: center;
-    padding-top: 20px;
+    /*background-color: red;*/
 }
 
 h1 {
