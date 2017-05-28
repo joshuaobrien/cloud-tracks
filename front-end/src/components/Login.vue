@@ -2,8 +2,8 @@
   <div id="window">
         <div id="content-row">
             <div id="content">
+                <glow></glow>
                 <logo-box></logo-box>
-                <div id="glow-dot"></div>
                 <form @submit.prevent="loginSubmit">
                     <div id="inputs-container">
                         <div class="reg-input">
@@ -25,7 +25,7 @@
 
 <script>
 import LogoBox from './LogoBox.vue'
-
+import Glow from './Glow.vue'
 export default {
   name: 'login',
   data () {
@@ -35,7 +35,8 @@ export default {
     }
   },
   components: {
-      LogoBox
+      LogoBox,
+      Glow
   },
   methods: {
         loginSubmit() {
@@ -151,20 +152,20 @@ export default {
   }
 
   #button-container {
+      /*background-color: red;*/
       margin: 0 auto;
       margin-top: 24px;
       text-align: center;
   }
 
   .button {
+      background-color: transparent;
       box-sizing: border-box;
       display: inline-block;
       width: 150px;
       height: 45px;
-      /*background-color: yellow;*/
       margin-left: 4px;
       margin-right: 4px;
-      background-color: #fcfcfc;
       color: #282828;
       font-size: 12px;
       line-height: 45px;

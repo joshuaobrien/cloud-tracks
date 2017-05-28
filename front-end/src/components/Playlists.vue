@@ -1,5 +1,6 @@
 <template>
     <div id="content-col">
+        <glow></glow>
         <div id="content-header">
             <h1>playlists</h1>
         </div>
@@ -15,6 +16,7 @@
 
 <script>
 import PlaylistItem from './PlaylistItem.vue'
+import Glow from './Glow.vue'
 export default {
   name: 'playlists',
   data () {
@@ -31,7 +33,8 @@ export default {
     }
   },
   components: {
-      PlaylistItem
+      PlaylistItem,
+      Glow
   },
   methods: {
       fetchPlaylists() {
@@ -80,7 +83,6 @@ export default {
 
 #content-header {
     height: 60px;
-    background-color: #ececec;
     border-radius: 2px;
     text-align: center;
     padding-top: 20px;
