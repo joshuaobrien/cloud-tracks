@@ -106,7 +106,8 @@ get '/test/playlist/:id' do
     tracks_data = []
 
     tracks.each do |track|
-        tracks_data.push Track.where(id: track.track_id)
+        detailed_track = Track.where(id: track.track_id)[0]
+        tracks_data.push detailed_track
     end
 
     status 200
