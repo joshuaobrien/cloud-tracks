@@ -21,7 +21,7 @@ export default {
   data () {
     return {
         tracks: new Array(),
-        playlist
+        playlist: {name: "fuckoff"}
     }
   },
   components: {
@@ -29,8 +29,8 @@ export default {
       Glow
   },
   methods: {
-      fetchPlaylist(id) {
-            this.$http.get('http://localhost:4567/test/playlist/' + id, {
+      fetchTracks(id) {
+            this.$http.get('http://localhost:4567/test/playlist_tracks/' + id, {
                 before(request) {
                 if (this.previousRequest) {
                     this.previousRequest.abort();
@@ -40,15 +40,15 @@ export default {
 
             }).then(response => {
                 this.tracks = response.body;
-                let chunk = response.body;
-                console.log(chunk)
+                console.log(this.tracks);
+                this.fetchPlaylist(id);
             }, response => {
                 // error callback
-                console.log(">> GET Request failed :(")
+                console.log(">> Tracks Request failed :(")
             });
       },
-      fetchTracks(id) {
-            this.$http.get('http://localhost:4567/test/playlist/' + id, {
+      fetchPlaylist(id) {
+            this.$http.get('http://localhost:4567/test/playlists/1', {
                 before(request) {
                 if (this.previousRequest) {
                     this.previousRequest.abort();
@@ -57,18 +57,16 @@ export default {
                 }
 
             }).then(response => {
-                this.tracks = response.body;
-                let chunk = response.body;
-                console.log(chunk)
+                this.playlist = response.body;
+                console.log(this.playlist)
             }, response => {
                 // error callback
-                console.log(">> GET Request failed :(")
+                console.log(">> Playlist Request failed :(")
             });
       }
   },
   created: function() {
       this.fetchTracks(this.$route.params.id);
-      this.fetchPlaylist(this.$route.params.id);
   }
 }
 </script>
