@@ -25,7 +25,7 @@ export default {
   name: 'landing',
   data () {
     return {
-        userLink: "https://www.youtube.com/watch?v=rC3L-Z6x4dg"
+        userLink: "https://www.youtube.com/watch?v=MOFG0dtkGRk"
     }
   },
   components: {

@@ -39,7 +39,7 @@ export default {
   methods: {
       fetchTracks() {
             // GET /someUrl
-            this.$http.get('http://localhost:4567/test/playlist/idgoeshere', {
+            this.$http.get('http://localhost:4567/test/playlist/1', {
 
                 // use before callback
                 before(request) {
@@ -55,7 +55,9 @@ export default {
 
             }).then(response => {
                 // success callback
-                // console.log(response.json());
+                console.log(response);
+                console.log(response.body);
+                console.log(response.json());
                 
             }, response => {
                 // error callback
