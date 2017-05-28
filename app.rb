@@ -114,6 +114,14 @@ get '/test/playlist/:id' do
     json tracks_data
 end
 
+get '/test/playlists' do
+
+    playlists = Playlist.all
+
+    status 200
+    json playlists
+end
+
 options "*" do
     response.headers["Allow"] = "GET, POST, OPTIONS"
     response.headers["Access-Control-Allow-Headers"] = "Authorization, Content-Type, Accept, X-User-Email, X-Auth-Token"

@@ -15,7 +15,7 @@ class SplitterService
         # get the thumbnail for the vid
         thumbnail_path = `youtube-dl --skip-download --list-thumbnails #{metadata['webpage_url']}| grep https:// | awk '{print $4}'`
 
-        Playlist.create(playlist_id: new_playlist_id, user_id: 0, name: metadata['fulltitle'], thumbnail_path: thumbnail_path)
+        Playlist.create(playlist_id: new_playlist_id, user_id: 0, name: metadata['fulltitle'], thumbnail_path: thumbnail_path.chomp)
 
         metadata['chapters'].each do |track|
             artist, title = track['title'].split('-')[0], track['title'].split('-')[1]
