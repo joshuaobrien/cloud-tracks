@@ -2,8 +2,8 @@
   <div id="window">
         <div id="content-row">
             <div id="content">
+                <glow></glow>
                 <logo-box></logo-box>
-                <div id="glow-dot"></div>
                 <form id="paste-box-container" @submit.prevent="linkSubmit">
                     <input type="text" spellcheck="false" v-model="userLink">
                     <div id="button-container">
@@ -20,7 +20,7 @@
 
 <script>
 import LogoBox from './LogoBox.vue'
-
+import Glow from './Glow.vue'
 export default {
   name: 'landing',
   data () {
@@ -29,7 +29,8 @@ export default {
     }
   },
   components: {
-      LogoBox
+      LogoBox,
+      Glow
   },
   methods: {
       linkSubmit() {
@@ -52,7 +53,6 @@ export default {
     margin: auto;
     margin-top: 175px;
     position: relative;
-    /*background-color: green;*/
   }
 
   #content {
