@@ -99,7 +99,7 @@ get '/test/test' do
     pp Track.where(id:279)
 end
 
-get '/test/playlist/:id' do
+get '/test/playlist_tracks/:id' do
 
     tracks = PlaylistTrack.where(playlist_id: params[:id])
 
@@ -113,6 +113,17 @@ get '/test/playlist/:id' do
     status 200
     json tracks_data
 end
+
+get '/test/playlists/:id' do
+
+    playlist = Playlist.where(playlist_id: params[:id])
+
+    status 200
+    json playlist
+
+end
+
+
 
 get '/test/playlists' do
 
