@@ -24,28 +24,15 @@
 					<div class="nav-button">tracks</div>
 				</router-link></li>
 			</ul>
-      <!--<a class="help">
-        <router-link to="/">Home</router-link>
-      </a>
-
-      <a>
-        <router-link to="/login">Login</router-link>
-      </a>
-
-      <a>
-        <router-link to="/register">Register</router-link>
-      </a>
-
-			<a>
-        <router-link to="/playlists">Playlists</router-link>
-      </a>
-
-			<a>
-        <router-link to="/tracks">Tracks</router-link>
-      </a>-->
     </div>
 
     <router-view></router-view>
+
+		<div class="footer-container">
+			<button type="button">PLAY</button>
+			<button type="button">PAUSE</button>
+		</div>
+
   </div>
 </template>
 
@@ -97,5 +84,23 @@ export default {
 	/*color: #ececec;*/
 	/*background-color: #282828;*/
 	box-shadow: 0 15px 20px -20px #282828;
+}
+
+.footer-container {
+	position:fixed;
+	height:50px;
+	background-color: #f2f2f2;
+	bottom:0px;
+	left:0px;
+	right:0px;
+	margin-bottom:0px;
+
+	text-align: center;
+	box-shadow: 0 -7px 20px -10px lightgray;
+}
+
+button {
+	width: 75px;
+	height: 100%;
 }
 </style>
