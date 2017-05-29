@@ -10,11 +10,7 @@
 				</router-link></li>
 
 				<li><router-link to="/login">
-					<div class="nav-button">login</div>
-				</router-link></li>
-
-				<li><router-link to="/register">
-					<div class="nav-button">register</div>
+					<div class="nav-button">{{loginButtonText}}</div>
 				</router-link></li>
 
 				<li><router-link to="/playlists">
@@ -35,7 +31,24 @@
 
 <script>
 export default {
-  name: 'app'
+  name: 'app',
+  data () {
+    return {
+        loginButtonText: "login"
+    }
+  },
+  methods: {
+	  handleSession() {
+		  if (this.$session.exists()) {
+			  this.loginButtonText = "logout";
+		  } else {
+			  this.loginButtonText = "login";
+		  }
+	  }
+  },
+  created: function() {
+	  this.handleSession();
+  }
 }
 </script>
 

@@ -55,9 +55,19 @@ export default {
                 // error callback
                 console.log(">> GET Request failed :(")
             });
+      },
+      handleSession() {
+          if (this.$session.exists()) {
+              console.log("YOU ARE LOGGED IN, GOOD JOB :^)");
+          } else {
+              console.log("LOGIN TO ACCESS THIS PAGE");
+              this.$router.push('/login');
+              alert("Please Login to acesss Playlists")
+          }
       }
   },
   created: function() {
+      this.handleSession();
       this.fetchPlaylists();
   }
 }

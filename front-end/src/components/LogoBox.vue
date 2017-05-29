@@ -13,15 +13,13 @@
 <script>
 export default {
   name: 'logo-box',
+  props: {
+      message: {
+          default: "cloud tracks"
+      }
+  },
   data () {
     return {
-        message: "cloud tracks"
-    }
-  },
-
-  methods: {
-    setText: function(message) {
-        alert("ITS WORKING")
     }
   }
 }

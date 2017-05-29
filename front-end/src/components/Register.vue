@@ -3,7 +3,7 @@
         <div id="content-row">
             <div id="content">
                 <glow></glow>
-                <logo-box ></logo-box>
+                <logo-box message="create account"></logo-box>
                 <form @submit.prevent="newUserSubmit">
                     <div id="inputs-container">
                             <input class="reg-input" type="text" spellcheck="false" placeholder="username" v-model="userName">
@@ -145,7 +145,7 @@ input:focus {
 
 #button-container {
     margin: 0 auto;
-    margin-top: 24px;
+    margin-top: 18px;
     text-align: center;
 }
 
@@ -153,7 +153,7 @@ input:focus {
     background-color: transparent;
     box-sizing: border-box;
     display: inline-block;
-    width: 150px;
+    width: 100%;
     height: 45px;
     margin-left: 4px;
     margin-right: 4px;
@@ -168,8 +168,8 @@ input:focus {
 .button:hover,
 .button:focus {
     /*margin-left: 5px;*/
-    border-width: 1px;
-    box-shadow: 0 0 2px 0 #737373;
+    /*border-width: 1px;*/
+    box-shadow: 0 5px 20px -10px black;
     cursor: pointer;
 }
 </style>

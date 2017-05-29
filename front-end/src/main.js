@@ -4,11 +4,11 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import vueResource from 'vue-resource'
-var vueTruncateFilter = require("vue-truncate-filter")
+import VueSession from 'vue-session'
 
 Vue.config.productionTip = false
 Vue.use(vueResource);
-Vue.use(vueTruncateFilter);
+Vue.use(VueSession)
 
 /* eslint-disable no-new */
 new Vue({
