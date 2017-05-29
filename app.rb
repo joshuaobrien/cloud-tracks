@@ -53,13 +53,30 @@ post '/test/download' do
 
     puts params[:url]
 
-    puts 'Downloading...'
-    filename = downloader.download_tape(params[:url])
     puts 'Ripping...'
     metadata = downloader.rip_metadata(params[:url])
+
+    # First we make sure that we haven't already downloaded this one
+    if Playlist.where(name: metadata['fulltitle'])[0]
+        puts 'Tape already downloaded'
+        status 200
+        json "This tape has already been downloaded!"
+        return
+    end
+
+    # Make sure that we have enough metadata information to split the track
+    if metadata['chapters'].nil?
+        puts 'No chapters information - cannot continue'
+        status 420
+        json "There is not enough metadata to split this tape. Sorry!"
+        return
+    end
+
+    puts 'Downloading...'
+    filename = downloader.download_tape(params[:url])
     puts 'Splitting..'
     splitter.split_tape(filename, metadata)
-    puts 'Ayy nice'
+    puts 'Complete'
 end
 
 post '/test/create_user' do
@@ -91,7 +108,8 @@ post '/test/login' do
             user.update(token: token.to_s)
 
             response = {:token => token.to_s}
-            json response
+            #json response
+            json 'Success'
         else
             status 201
             json 'Failure'

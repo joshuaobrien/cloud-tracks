@@ -1,6 +1,7 @@
 load 'lib/track.rb'
 load 'lib/playlist_track.rb'
 load 'lib/playlist.rb'
+require 'json'
 
 class SplitterService
     def initialzie
