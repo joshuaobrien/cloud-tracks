@@ -6,7 +6,7 @@
             </div>
             <p class="artist">{{track.artist + " - "}}</p>
             <p class="title">{{track.name}}</p>
-            <p class="duration">{{track.duration}}</p>
+            <p class="duration">{{convertTime(track.duration)}}</p>
         </div>
     </li>
 </template>
@@ -18,6 +18,16 @@ export default {
   data () {
     return {
     }
+  },
+  methods: {   
+      convertTime(seconds) {
+          var minutes = Math.floor(seconds/60);
+          var subSeconds = Math.floor((seconds/60 - minutes) * 60);
+          if (subSeconds < 10) {
+            subSeconds = "0" + subSeconds;
+          }
+          return minutes + ":" + subSeconds;
+      }
   }
 }
 </script>
@@ -29,8 +39,9 @@ export default {
     position: relative;
     height: 50px;
     width: 100%;
-    background-color: pink;
-    border-radius: 2px;
+    /*background-color: pink;*/
+    border-radius: 4px;
+    border-bottom: 1px solid #ddd;
 }
 
 .track-item:hover {

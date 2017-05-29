@@ -1,7 +1,8 @@
 <template>
     <div id="content-col">
         <div id="content-header">
-            <h1>{{playlist.name}}</h1>
+            <h1>{{truncate(playlist.name)}}</h1>
+            <img class="thumbnail" v-bind:src="playlist.thumbnail_path">
         </div>
         <glow></glow>
         <div id="content">
@@ -63,6 +64,12 @@ export default {
                 // error callback
                 console.log(">> Playlist Request failed :(")
             });
+      },
+      truncate(message) {
+          if (message.length > 24) {
+              message = message.substring(0, 21) + "...";
+          }
+          return message;
       }
   },
   created: function() {
@@ -84,15 +91,31 @@ export default {
 
 #content-header {
     height: 160px;
-    line-height: 160px;
     border-radius: 2px;
-    text-align: center;
+    text-align: right;
+    line-height: 160px;
     /*background-color: red;*/
 }
 
+#content-header > * {
+}
+
+.thumbnail {
+    display: inline-block;
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    margin-top: 20px;
+    margin-right: 60px;
+}
+
 h1 {
-    font-size: 36px;
+    float: left;
+    letter-spacing: 4px;
+    font-size: 24px;
     color: #282828;
+    margin-left: 60px;
+    max-width: 450px;
 }
 
 #content {
