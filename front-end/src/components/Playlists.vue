@@ -34,26 +34,22 @@ export default {
                 token: this.$session.get('tok')
             };
 
-            this.$http.get('http://localhost:4567/test/playlists', data, {
-
-                // use before callback
+            this.$http.get('http://localhost:4567/test/playlists', {
                 before(request) {
-
-                // abort previous request, if exists
                 if (this.previousRequest) {
                     this.previousRequest.abort();
                 }
-
-                // set previous request on Vue instance
                 this.previousRequest = request;
+                },
+
+                headers: {
+                    token: this.$session.get('tok')
                 }
 
             }).then(response => {
-                // success callback
                 this.playlists = response.body;
                 let chunk = response.body;
-                console.log(chunk)
-                // console.log("[0].name: " + chunk[0].name)
+                // console.log(chunk)
         
             }, response => {
                 // error callback
