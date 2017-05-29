@@ -5,7 +5,8 @@
 
 			<ul class="navbar-link-container">
 				<li><router-link to="/">
-					<div class="nav-button">home</div>
+					<div class="nav-button home-button">___</div>
+					<!--<img class="home-image" src="../static/cloud.png">-->
 				</router-link></li>
 
 				<li><router-link to="/login">
@@ -46,6 +47,7 @@ export default {
 	position: fixed;
 	width: 100%;
 	top: 0;
+	height: 50px;
 
 	text-align: center;
 	z-index: 1000;
@@ -55,8 +57,8 @@ export default {
 
 .navbar-link-container > li {
 	display: inline-block;
-	height: 50px;
 	width: 150px;
+	/*background-color: yellow;*/
 }
 
 .nav-button {
@@ -71,7 +73,6 @@ export default {
 	line-height: 50px;
 
 	border-radius: 2px;
-	
 }
 
 .nav-button:hover {
@@ -80,6 +81,18 @@ export default {
 	/*color: #ececec;*/
 	/*background-color: #282828;*/
 	box-shadow: 0 15px 20px -20px #282828;
+}
+
+.home-button {
+	color: white;
+	background-image: url("../static/cloud.png");
+	background-size: auto 25px;
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+.home-button:hover {
+	color: white;
 }
 
 .footer-container {
