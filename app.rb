@@ -64,6 +64,14 @@ post '/test/download' do
         return
     end
 
+    # Make sure that we have enough metadata information to split the track
+    if metadata['chapters'].nil?
+        puts 'No chapters information - cannot continue'
+        status 420
+        json "There is not enough metadata to split this tape. Sorry!"
+        return
+    end
+
     puts 'Downloading...'
     filename = downloader.download_tape(params[:url])
     puts 'Splitting..'
