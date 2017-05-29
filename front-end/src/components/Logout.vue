@@ -11,14 +11,14 @@ export default {
   },
   
   methods: {
-      destroySession() {
-          this.$session.destroy();
+      handleLogout() {
+        this.$session.clear();
+        this.$router.push('/');
       }
   },
 
   created: function() {
-      this.destroySession();
-      this.$router.push('/');
+      this.handleLogout();
   }
 }
 </script>

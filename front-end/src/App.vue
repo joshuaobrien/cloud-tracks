@@ -9,12 +9,12 @@
 					<!--<img class="home-image" src="../static/cloud.png">-->
 				</router-link></li>
 
-				<li><router-link to="/login">
-					<div class="nav-button">{{loginButtonText}}</div>
-				</router-link></li>
-
 				<li><router-link to="/playlists">
 					<div class="nav-button">playlists</div>
+				</router-link></li>
+
+				<li><router-link v-bind:to="loginLink">
+					<div class="nav-button">{{getLoginButtonText}}</div>
 				</router-link></li>
 			</ul>
     </div>
@@ -34,16 +34,38 @@ export default {
   name: 'app',
   data () {
     return {
-        loginButtonText: "login"
+        loginButtonText: "login",
+		loginLink: "/login",
+		session: this.$session
     }
   },
+
   methods: {
 	  handleSession() {
-		  this.$session.start();
+		  if (!this.$session.exists()) {
+			this.$session.start();
+		  }
 	  }
   },
+
+  computed: {
+	  getLoginButtonText: {
+		  cache: false,
+		  get() {
+			if (this.session.has('tok')) {
+				this.loginLink = '/logout';
+				return "logout";
+		  	} else {
+				  this.loginLink = '/login';
+			  return "login";
+			}
+		  }
+	  }
+  },
+
   created: function() {
 	  this.handleSession();
+	  this.session.computed;
   }
 }
 </script>

@@ -66,9 +66,9 @@ export default {
                 if (response.status == 201) {
                     var responseData = response.body
                     if (responseData == 'Success') {
-                        this.$session.start();
                         this.$session.set('tok', 123);
                         this.$router.push('/playlists');
+                        this.$
                         return;
                     }
                 }
