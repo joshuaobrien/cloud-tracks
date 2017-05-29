@@ -34,18 +34,14 @@ export default {
                 token: this.$session.get('tok')
             };
 
-            this.$http.get('http://localhost:4567/test/playlists', {
+            this.$http.get('http://localhost:4567/test/playlists/token=' + this.$session.get('tok'), {
                 before(request) {
                 if (this.previousRequest) {
                     this.previousRequest.abort();
                 }
                 this.previousRequest = request;
-                },
-
-                headers: {
-                    token: this.$session.get('tok')
                 }
-
+                
             }).then(response => {
                 this.playlists = response.body;
                 let chunk = response.body;

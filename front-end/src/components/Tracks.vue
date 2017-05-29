@@ -35,16 +35,12 @@ export default {
             token: this.$session.get('tok')
         };
 
-            this.$http.get('http://localhost:4567/test/playlist_tracks/' + id, {
+            this.$http.get('http://localhost:4567/test/playlist_tracks/' + id + '/token=' + this.$session.get('tok'), {
                 before(request) {
                 if (this.previousRequest) {
                     this.previousRequest.abort();
                 }
                 this.previousRequest = request;
-                },
-
-                headers: {
-                    token: this.$session.get('tok')
                 }
 
             }).then(response => {
@@ -57,7 +53,7 @@ export default {
             });
       },
       fetchPlaylist(id) {
-            this.$http.get('http://localhost:4567/test/playlists/1', {
+            this.$http.get('http://localhost:4567/test/playlists/' + id + '/token=' + this.$session.get('tok'), {
                 before(request) {
                 if (this.previousRequest) {
                     this.previousRequest.abort();
