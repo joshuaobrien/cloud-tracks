@@ -6,6 +6,7 @@ require 'pp'
 require 'sinatra/activerecord'
 require './config/environments'
 require 'sinatra/cross_origin'
+require 'securerandom'
 
 
 load 'lib/services/download_service.rb'
@@ -69,7 +70,6 @@ post '/test/create_user' do
         user.username = params[:username]
         user.password = params[:password]
 
-
         if user.save
             status 200
         else
@@ -82,9 +82,16 @@ end
 post '/test/login' do
     unless params[:username].nil? || params[:password].nil?
 
-        if User.find_by(username: params[:username]).try(:authenticate, params[:password])
+        user = User.find_by(username: params[:username]);
+
+        if user.try(:authenticate, params[:password])
             status 201
-            json 'Success'
+            token = SecureRandom.uuid
+
+            user.update(token: token.to_s)
+
+            response = {:token => token.to_s}
+            json response
         else
             status 201
             json 'Failure'
