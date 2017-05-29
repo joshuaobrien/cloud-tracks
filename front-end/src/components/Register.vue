@@ -60,7 +60,24 @@ export default {
 
             this.$http.post('http://localhost:4567/test/create_user', newUser, {
                 emulateJSON: true
-            })
+            }).then(response => {
+                this.$http.post('http://localhost:4567/test/login', newUser, {
+                    emulateJSON: true
+                }).then(response => {
+                    if (response.status == 201) {
+                    var responseData = response.body
+                    if (responseData == 'Success') {
+                        this.$session.set('tok', 123); // TODO insert actual token
+                        this.$router.push('/');
+                        return;
+                        }
+                    }
+                    alert("Login failed");
+                }, response => {
+                    // error callback
+                    alert("Well cooked");
+                });
+            });
         }
     }
 }

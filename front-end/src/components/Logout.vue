@@ -13,7 +13,7 @@ export default {
   methods: {
       handleLogout() {
         this.$session.clear();
-        this.$router.push('/');
+        this.$router.push('/playlist'); // this will force a login -> playlist
       }
   },
 

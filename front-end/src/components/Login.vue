@@ -36,8 +36,7 @@ export default {
   data () {
     return {
         userName: "",
-        userPass: "",
-        fromPath: '/'
+        userPass: ""
     }
   },
   components: {
@@ -67,8 +66,8 @@ export default {
                 if (response.status == 201) {
                     var responseData = response.body
                     if (responseData == 'Success') {
-                        this.$session.set('tok', 123);
-                        this.$router.push(this.fromPath);
+                        this.$session.set('tok', 123); // TODO insert actual token
+                        this.$router.push(this.$session.get('prv'));
                         this.$
                         return;
                     }
@@ -84,7 +83,7 @@ export default {
     },
     beforeRouteEnter(to, from, next) {
          next(vm => {
-             vm.fromPath = from.path;
+             vm.$session.set('prv', from.path);
          })
     }
 }

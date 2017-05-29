@@ -44,6 +44,7 @@ export default {
 	  handleSession() {
 		  if (!this.$session.exists()) {
 			this.$session.start();
+			this.$session.set('prv', '/');
 		  }
 	  }
   },
