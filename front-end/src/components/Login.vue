@@ -66,6 +66,9 @@ export default {
                 if (response.status == 201) {
                     var responseData = response.body
                     if (responseData == 'Success') {
+                        this.$session.start();
+                        this.$session.set('tok', 123);
+                        this.$router.push('/playlists');
                         return;
                     }
                 }
@@ -183,8 +186,7 @@ input:focus {
 
 .button:hover,
 .button:focus {
-    /*margin-left: 5px;*/
-    /*border-width: 1px;*/
+    background-color: transparent;
     box-shadow: 0 5px 20px -10px black;
     cursor: pointer;
 }

@@ -58,16 +58,18 @@ export default {
       },
       handleSession() {
           if (this.$session.exists()) {
-              console.log("YOU ARE LOGGED IN, GOOD JOB :^)");
+              return true;
           } else {
-              console.log("LOGIN TO ACCESS THIS PAGE");
+              console.log("Can't access playlits without loggin in");
               this.$router.push('/login');
-              alert("Please Login to acesss Playlists")
           }
+          return false;
       }
   },
   created: function() {
-      this.handleSession();
+      if (!this.handleSession()) {
+          return;
+      }
       this.fetchPlaylists();
   }
 }

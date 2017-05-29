@@ -5,7 +5,7 @@
 
 			<ul class="navbar-link-container">
 				<li><router-link to="/">
-					<div class="nav-button home-button">___</div>
+					<div class="nav-button home-button">home</div>
 					<!--<img class="home-image" src="../static/cloud.png">-->
 				</router-link></li>
 
@@ -97,15 +97,15 @@ export default {
 }
 
 .home-button {
-	color: white;
-	background-image: url("../static/cloud.png");
+	color: transparent;
+	background-image: url("../static/full-cloud.png");
 	background-size: auto 25px;
 	background-repeat: no-repeat;
 	background-position: center center;
 }
 
 .home-button:hover {
-	color: white;
+	color: transparent;
 }
 
 .footer-container {

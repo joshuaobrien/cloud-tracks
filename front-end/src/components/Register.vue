@@ -167,8 +167,7 @@ input:focus {
 
 .button:hover,
 .button:focus {
-    /*margin-left: 5px;*/
-    /*border-width: 1px;*/
+    background-color: transparent;
     box-shadow: 0 5px 20px -10px black;
     cursor: pointer;
 }
