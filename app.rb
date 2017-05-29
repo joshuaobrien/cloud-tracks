@@ -86,8 +86,11 @@ post '/test/create_user' do
         user = User.new
         user.username = params[:username]
         user.password = params[:password]
+        user.token = SecureRandom.uuid
 
         if user.save
+            response = {:token => token.to_s}
+            json response
             status 200
         else
             status 201
@@ -108,8 +111,8 @@ post '/test/login' do
             user.update(token: token.to_s)
 
             response = {:token => token.to_s}
-            #json response
-            json 'Success'
+            json response
+            #json 'Success'
         else
             status 201
             json 'Failure'
