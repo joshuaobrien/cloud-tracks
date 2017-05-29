@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Landing from '@/components/Landing'
 import Register from '@/components/Register'
 import Login from '@/components/Login'
+import Logout from '@/components/Logout'
 import Playlists from '@/components/Playlists'
 import Tracks from '@/components/Tracks'
 import '../../static/reset.css'
@@ -35,6 +36,11 @@ export default new Router({
             path: '/tracks/:id',
             name: 'Tracks',
             component: Tracks
+        },
+        {
+            path: '/logout',
+            name: 'Logout',
+            component: Logout
         }
     ]
 })

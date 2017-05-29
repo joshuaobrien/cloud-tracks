@@ -39,11 +39,7 @@ export default {
   },
   methods: {
 	  handleSession() {
-		  if (this.$session.exists()) {
-			  this.loginButtonText = "logout";
-		  } else {
-			  this.loginButtonText = "login";
-		  }
+		  this.$session.start();
 	  }
   },
   created: function() {

@@ -57,7 +57,7 @@ export default {
             });
       },
       handleSession() {
-          if (this.$session.exists()) {
+          if (this.$session.has('tok')) {
               return true;
           } else {
               console.log("Can't access playlits without loggin in");
