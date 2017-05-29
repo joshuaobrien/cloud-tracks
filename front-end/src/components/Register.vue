@@ -24,7 +24,7 @@
 import LogoBox from './LogoBox.vue'
 import Glow from './Glow.vue'
 export default {
-  name: 'landing',
+  name: 'register',
   data () {
     return {
         userName: "",

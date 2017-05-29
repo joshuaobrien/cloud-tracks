@@ -120,10 +120,12 @@ export default {
 	background-size: auto 25px;
 	background-repeat: no-repeat;
 	background-position: center center;
+	opacity: 0.7;
 }
 
 .home-button:hover {
 	color: transparent;
+	opacity: 0.9;
 }
 
 .footer-container {

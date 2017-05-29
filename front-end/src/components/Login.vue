@@ -36,7 +36,8 @@ export default {
   data () {
     return {
         userName: "",
-        userPass: ""
+        userPass: "",
+        fromPath: '/'
     }
   },
   components: {
@@ -67,7 +68,7 @@ export default {
                     var responseData = response.body
                     if (responseData == 'Success') {
                         this.$session.set('tok', 123);
-                        this.$router.push('/playlists');
+                        this.$router.push(this.fromPath);
                         this.$
                         return;
                     }
@@ -80,6 +81,11 @@ export default {
         }
     },
     created: function() {
+    },
+    beforeRouteEnter(to, from, next) {
+         next(vm => {
+             vm.fromPath = from.path;
+         })
     }
 }
 </script>
