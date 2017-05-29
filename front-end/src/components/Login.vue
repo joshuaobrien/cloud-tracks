@@ -66,7 +66,7 @@ export default {
                 if (response.status == 201) {
                     var responseData = response.body
                     if (responseData != 'Failure') {
-                        this.$session.set('tok', responseData); // TODO insert actual token
+                        this.$session.set('tok', responseData.token); // TODO insert actual token
                         this.$router.push(this.$session.get('prv'));
                         return;
                     }
