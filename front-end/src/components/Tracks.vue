@@ -31,7 +31,11 @@ export default {
   },
   methods: {
       fetchTracks(id) {
-            this.$http.get('http://localhost:4567/test/playlist_tracks/' + id, {
+        let data = {
+            token: this.$session.get('tok')
+        };
+
+            this.$http.get('http://localhost:4567/test/playlist_tracks/' + id, data, {
                 before(request) {
                 if (this.previousRequest) {
                     this.previousRequest.abort();

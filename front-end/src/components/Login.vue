@@ -65,15 +65,16 @@ export default {
             }).then(response => {
                 if (response.status == 201) {
                     var responseData = response.body
-                    if (responseData == 'Success') {
-                        this.$session.set('tok', 123); // TODO insert actual token
+                    if (responseData != 'Failure') {
+                        this.$session.set('tok', responseData); // TODO insert actual token
                         this.$router.push(this.$session.get('prv'));
-                        this.$
                         return;
                     }
+                    this.$session.remove('tok');
                 }
                 alert("Login failed");
             }, response => {
+                console.log(response.body);
                 // error callback
                 alert("Well cooked");
             });

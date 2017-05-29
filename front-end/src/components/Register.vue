@@ -55,19 +55,21 @@ export default {
 
             let newUser = {
                 username: this.userName,
-                password: this.userPass
+                password: this.userPass,
+                token: 'meme'
             };
 
             this.$http.post('http://localhost:4567/test/create_user', newUser, {
                 emulateJSON: true
             }).then(response => {
+                newUser.token = response.body;
                 this.$http.post('http://localhost:4567/test/login', newUser, {
                     emulateJSON: true
                 }).then(response => {
                     if (response.status == 201) {
                     var responseData = response.body
-                    if (responseData == 'Success') {
-                        this.$session.set('tok', 123); // TODO insert actual token
+                    if (responseData != 'Failure') {
+                        this.$session.set('tok', responseData); // TODO insert actual token
                         this.$router.push('/');
                         return;
                         }
@@ -77,6 +79,9 @@ export default {
                     // error callback
                     alert("Well cooked");
                 });
+            }, response => {
+                // error callback
+                alert("Well cooked v2.0");
             });
         }
     }

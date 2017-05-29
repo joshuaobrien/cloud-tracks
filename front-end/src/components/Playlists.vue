@@ -30,7 +30,11 @@ export default {
   methods: {
       fetchPlaylists() {
             // GET /someUrl
-            this.$http.get('http://localhost:4567/test/playlists', {
+            let data = {
+                token: this.$session.get('tok')
+            };
+
+            this.$http.get('http://localhost:4567/test/playlists', data, {
 
                 // use before callback
                 before(request) {
