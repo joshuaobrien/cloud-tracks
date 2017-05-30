@@ -5,13 +5,17 @@
                 <glow></glow>
                 <logo-box></logo-box>
                 <form id="paste-box-container" @submit.prevent="linkSubmit">
-                    <input type="text" spellcheck="false" v-model="userLink">
+                    <input type="text" spellcheck="false" v-model="userLink" v-bind:class="{ 'blocked': isDownloading}">
                     <div id="button-container">
                         <div class="icon-button" id="download-button" @click="linkSubmit">
                             <img src="../assets/cloud-download.png">
                         </div>
                     </div>
                 </form>
+
+                <div class="under-box" @click="">
+                    <p v-if="isDownloading">{{statusMessage}}</p>
+                </div>
 
             </div>
         </div>
@@ -25,7 +29,9 @@ export default {
   name: 'landing',
   data () {
     return {
-        userLink: "https://www.youtube.com/watch?v=MOFG0dtkGRk"
+        userLink: "https://www.youtube.com/watch?v=MOFG0dtkGRk",
+        statusMessage: "DOWNLOADING...",
+        isDownloading: false
     }
   },
   components: {
@@ -57,6 +63,9 @@ export default {
                     alert("This video has already been downloaded");
                     return;
                 }
+
+                // TURN THIS ON IFF THERE IS A WAY TO TURN IT OFF!!!
+                // this.isDownloading = true;
 
             }, response => {
                 // error callback
@@ -147,6 +156,16 @@ export default {
       background-color: white;
   }
 
+  .blocked {
+      color: lightgray;
+      background-color: #f8f8f8;
+  }
+
+  .blocked:focus {
+      color: lightgray;
+      background-color: #f8f8f8;
+  }
+
   #button-container {
       float: right;
       position: absolute;
@@ -170,4 +189,21 @@ export default {
       cursor: pointer;
       opacity: 0.75;
   }
+
+  .under-box {
+    text-align: center;
+    width: 100%;
+    /*background-color: blue;*/
+    margin-top: 20px;
+    color: #282828;
+    opacity: 0.5;
+    font-size: 13px;
+    letter-spacing: 2px;
+}
+
+p {
+    display: inline-block;
+    width: 180px;
+    padding: 16px;
+}
 </style>
