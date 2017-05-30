@@ -11,7 +11,7 @@
                 </a>-->
             </div>
 
-            <p class="playlist-title">{{playlist.name}}</p>
+            <p class="playlist-title">{{truncate(playlist.name)}}</p>
             <!--<p class="playlist-artist">{{playlist.artist}}</P>-->
         </div>
     </li>
@@ -28,7 +28,8 @@ export default {
   },
   methods: {
       truncate(message) {
-          if (message.length > 16) {
+
+          if (message.length > 12) {
               message = message.substring(0, 16) + "...";
           }
           return message;
