@@ -1,6 +1,6 @@
 <template>
     <li>
-        <div @click="setTrack(track.id)" class="track-item">
+        <div @click="setTrack(index)" class="track-item">
             <div class="pp-button" href="#play">
                 <img src="../assets/play-large.png" alt="play-button-icon">
             </div>
@@ -17,7 +17,7 @@
 import bus from '../eventBus'
 export default {
   name: 'track-item',
-  props: ['track', 'playlist'],
+  props: ['track', 'playlist', 'index'],
   data () {
     return {
     }
@@ -36,8 +36,9 @@ export default {
             // var serverPath = "/static/splittapes/" + playlist.playlist_id + "/" + track.id + ".m4a";
             // var serverPath = "/media/" + playlist.playlist_id + "/" + track.id + ".m4a";
             // console.log(serverPath);
-
-            this.$session.set('index', index - 1);
+            
+            console.log("track.id: " + index)
+            this.$session.set('index', index);
             bus.$emit('trackChange');
       }
   }
