@@ -4,12 +4,12 @@
     <div class="navbar">
 
 			<ul class="navbar-link-container">
-				<li><router-link to="/">
+				<li ><router-link to="/">
 					<div class="nav-button home-button">home</div>
 					<!--<img class="home-image" src="../static/cloud.png">-->
 				</router-link></li>
 
-				<li><router-link to="/playlists">
+				<li ><router-link to="/playlists">
 					<div class="nav-button">playlists</div>
 				</router-link></li>
 
@@ -22,21 +22,20 @@
     <router-view></router-view>
 
 		<div class="footer-container">
-			<button type="button">PLAY</button>
-			<button type="button">PAUSE</button>
+			<audio src="../static/meme.m4a" controls autoplay/>
 		</div>
 
   </div>
 </template>
 
 <script>
+import bus from './eventBus'
 export default {
   name: 'app',
   data () {
     return {
         loginButtonText: "login",
-		loginLink: "/login",
-		session: this.$session
+		loginLink: "/login"
     }
   },
 
@@ -46,14 +45,14 @@ export default {
 			this.$session.start();
 			this.$session.set('prv', '/');
 		  }
-	  }
+	  },
   },
 
   computed: {
 	  getLoginButtonText: {
 		  cache: false,
 		  get() {
-			if (this.session.has('tok')) {
+			if (this.$session.has('tok')) {
 				this.loginLink = '/logout';
 				return "logout";
 		  	} else {
@@ -61,12 +60,15 @@ export default {
 			  return "login";
 			}
 		  }
-	  }
+	  },
   },
 
   created: function() {
 	  this.handleSession();
-	  this.session.computed;
+		bus.$on('trackChange', function() {
+			$('audio').src = this.$session.get('track');
+			$('audio').load();
+		});
   }
 }
 </script>

@@ -42,6 +42,9 @@ export default {
                 emulateJSON: true
             })
         }
+  },
+
+  created: function() {
   }
 }
 </script>
