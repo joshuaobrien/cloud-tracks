@@ -170,10 +170,8 @@ audio {
 	background-color: #f2f2f2;
 }
 
-@media screen 
-  and (device-width: 1440px) 
-  and (device-height: 2560px) {
-	.navbar {
+@media (min-width:1280px) {
+.navbar {
 		background-color: red;
 	}
 	.footer-container {
