@@ -31,10 +31,11 @@ export default {
       },
 
       setTrack(track, playlist) {
-            var serverPath = "/media/" + playlist.playlist_id + "/" + track.id;
-            var testPath = "cloud-tracks/splittapes/" + playlist.playlist_id + "/" + track.id;
+            var serverPath = "/media/" + playlist.playlist_id + "/" + track.id + ".m4a";
+            // var testPath = "/media/splittapes/" + playlist.playlist_id + "/" + track.id + ".m4a";
 
-            this.$session.set('track', testPath);
+            console.log(serverPath);
+            this.$session.set('track', serverPath);
             bus.$emit('trackChange');
       }
   }
