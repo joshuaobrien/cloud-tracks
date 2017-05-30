@@ -35,7 +35,8 @@ export default {
   data () {
     return {
         loginButtonText: "login",
-		loginLink: "/login"
+		loginLink: "/login",
+		isMobile: false
     }
   },
 
@@ -46,6 +47,16 @@ export default {
 			this.$session.set('prv', '/');
 		  }
 	  },
+	  handleMobile() {
+		  if($_SERVER['HTTP_X_REQUESTED_WITH'] == "com.example.tig") {
+				isMobile = true;
+				alert("you are on a mobile");
+		  }
+			else {
+				alert("you are on a desktop")
+				isMobile = false;
+			}
+	  }
   },
 
   computed: {
@@ -65,6 +76,7 @@ export default {
 
   created: function() {
 	  this.handleSession();
+	  this.handleMobile();
 		bus.$on('trackChange', function() {
 			$('audio').src = this.$session.get('track');
 			$('audio').load();
@@ -156,8 +168,7 @@ audio {
 
 @media screen 
   and (device-width: 1440px) 
-  and (device-height: 2560px) 
-  and (orientation: portrait) {
+  and (device-height: 2560px) {
 	.navbar {
 		background-color: red;
 	}
