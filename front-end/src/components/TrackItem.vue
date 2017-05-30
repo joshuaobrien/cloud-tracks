@@ -1,6 +1,6 @@
 <template>
     <li>
-        <div @click="setTrack(track.filepath)" class="track-item">
+        <div @click="setTrack(track, playlist)" class="track-item">
             <div class="pp-button" href="#play">
                 <img src="../assets/play-large.png">
             </div>
@@ -31,7 +31,8 @@ export default {
       },
 
       setTrack(track, playlist) {
-            this.$session.set('track', "/" + playlist.playlist_id + "/" + track.id);
+            var trackPath = "/media/" + playlist.playlist_id + "/" + track.id;
+            this.$session.set('track', trackPath);
             // this.$session.set('track', "../static/trap.mp3")
             bus.$emit('trackChange');
       }
