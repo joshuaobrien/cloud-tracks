@@ -3,6 +3,7 @@
 </template>
 
 <script>
+import bus from '../eventBus'
 export default {
   name: 'logout',
   data () {
@@ -13,6 +14,7 @@ export default {
   methods: {
       handleLogout() {
         this.$session.clear();
+        bus.$emit('trackChange');
         this.$router.push('/playlists'); // this will force a login -> playlist
       }
   },
