@@ -96,8 +96,9 @@ export default {
 .playlist-item>p {
     color: #282828;
     letter-spacing: 0.2px;
-    max-width: 160px;
-    max-height: 16px;
+    width: 160px;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
 }
 
 .playlist-title {
@@ -109,10 +110,5 @@ export default {
     margin-top: 8px;
     font-size: 12px;
     opacity: 0.8;
-}
-
-p {
-    width: 160px;
-    text-overflow: ellipsis;
 }
 </style>
