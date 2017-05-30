@@ -8,7 +8,7 @@
                     <input type="text" spellcheck="false" v-model="userLink" v-bind:class="{ 'blocked': isDownloading}">
                     <div id="button-container">
                         <div class="icon-button" id="download-button" @click="linkSubmit">
-                            <img src="../assets/cloud-download.png">
+                            <img src="../assets/cloud-download.png" alt="download-button-icon">
                         </div>
                     </div>
                 </form>
@@ -69,7 +69,7 @@ export default {
 
             }, response => {
                 // error callback
-                alert("Something went wrong: ensure you only paste YouTube links");
+                alert("Something went wrong: please try a different link");
             });
         }
   },

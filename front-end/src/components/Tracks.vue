@@ -2,7 +2,7 @@
     <div id="content-col">
         <div id="content-header">
             <h1>{{playlist.name}}</h1>
-            <img class="thumbnail" v-bind:src="playlist.thumbnail_path">
+            <img class="thumbnail" v-bind:src="playlist.thumbnail_path" alt="playlist-thumbnail">
         </div>
         <glow></glow>
         <div id="content">

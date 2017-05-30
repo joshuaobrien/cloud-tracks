@@ -33,8 +33,8 @@ export default {
       },
 
       setTrack(track, playlist) {
-            var serverPath = "/static/splittapes/" + playlist.playlist_id + "/" + track.id + ".m4a";
-            // var serverPath = "/media/" + playlist.playlist_id + "/" + track.id + ".m4a";
+            // var serverPath = "/static/splittapes/" + playlist.playlist_id + "/" + track.id + ".m4a";
+            var serverPath = "/media/" + playlist.playlist_id + "/" + track.id + ".m4a";
 
             console.log(serverPath);
             this.$session.set('track', serverPath);

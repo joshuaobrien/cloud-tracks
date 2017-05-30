@@ -3,11 +3,11 @@
         <div class="playlist-item">
             <div class="playlist-thumbnail-container">
                 <router-link :to="'/tracks/' + playlist.playlist_id">
-                    <img class="thumbnail" v-bind:src="playlist.thumbnail_path" href="#okay">
+                    <img class="thumbnail" v-bind:src="playlist.thumbnail_path" href="#okay" alt="playlist-thumbnail-image">
                 </router-link>
 
                 <a class="pp-button" href="#play">
-                    <img src="../assets/play-large.png">
+                    <img src="../assets/play-large.png" alt="playbutton-icon">
                 </a>
             </div>
 

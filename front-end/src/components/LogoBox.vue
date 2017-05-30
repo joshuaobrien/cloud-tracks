@@ -1,7 +1,7 @@
 <template>
     <div id="content">
         <div id="logo-container">
-            <img id="logo" src="../assets/cloud.png">
+            <img id="logo" src="../assets/cloud.png" alt="cloud-tracks-logo">
         </div>
 
         <div id="title">
