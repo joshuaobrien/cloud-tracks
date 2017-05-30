@@ -170,12 +170,12 @@ audio {
 	background-color: #f2f2f2;
 }
 
-@media (min-width:1280px) {
-.navbar {
+@media (max-width:1280px) {
+	/*.navbar {
 		background-color: red;
 	}
 	.footer-container {
 		background-color: red;
-	}
+	}*/
 }
 </style>
