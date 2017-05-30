@@ -134,7 +134,7 @@ export default {
 .footer-container {
 	position:fixed;
 	height:50px;
-	background-color: #f2f2f2;
+	background-color: #fbfbfb;
 	bottom:0px;
 	left:0px;
 	right:0px;
@@ -147,5 +147,10 @@ export default {
 button {
 	width: 75px;
 	height: 100%;
+}
+
+audio {
+	width: 700px;
+	background-color: #f2f2f2;
 }
 </style>

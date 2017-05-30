@@ -113,7 +113,7 @@ export default {
 }
 
 h1 {
-    background-color: red;
+    /*background-color: red;*/
     float: left;
     letter-spacing: 4px;
     font-size: 24px;

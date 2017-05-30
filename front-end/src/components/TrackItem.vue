@@ -103,18 +103,18 @@ p {
 .artist {
     /*position: absolute;*/
     /*left: 0;*/
-    background-color: red;
+    /*background-color: red;*/
     opacity: 0.55;
     margin-left: 50px;
 }
 
 .title {
-    background-color: blue;
+    /*background-color: blue;*/
     margin-left: 16px;
 }
 
 .duration {
-    background-color: yellow;
+    /*background-color: yellow;*/
     float: right;
     margin-right: 16px;
 }
