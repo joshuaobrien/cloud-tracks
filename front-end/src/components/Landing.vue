@@ -35,13 +35,33 @@ export default {
   methods: {
       linkSubmit() {
 
+          if (!this.$session.has('tok')) {
+                alert("Please login to access this feature")
+                this.$router.push("/login");
+                return;
+          }
+
             let newLink = {
                 url: this.userLink
             };
             this.$http.post('http://localhost:4567/test/download', newLink, {
             // this.$http.post('https://cloudtracks.sadnc.com/api/test/download', newLink, {
                 emulateJSON: true
-            })
+            }).then(response => {
+                if (response.status === 420) {
+                    alert("Bad link: please try another video");
+                    return;
+                }
+
+                if (response.status === 421) {
+                    alert("This video has already been downloaded");
+                    return;
+                }
+
+            }, response => {
+                // error callback
+                alert("Something went wrong: ensure you only paste YouTube links");
+            });
         }
   },
 
