@@ -50,8 +50,8 @@ export default {
             let newLink = {
                 url: this.userLink
             };
-            this.$http.post('http://localhost:4567/test/download', newLink, {
-            // this.$http.post('https://cloudtracks.sadnc.com/api/test/download', newLink, {
+            // this.$http.post('http://localhost:4567/test/download', newLink, {
+            this.$http.post('https://cloudtracks.sadnc.com/api/test/download', newLink, {
                 emulateJSON: true
             }).then(response => {
                 if (response.status === 420) {
