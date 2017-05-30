@@ -34,20 +34,28 @@ class SplitterService
             duration_in_seconds = Time.at(track['end_time'].to_i - track['start_time'].to_i).utc
 
             # make a new directory if one doesn't exist
-            path = "splittapes/" + metadata['fulltitle']
-            path_mkdir= "splittapes/" + "'" + metadata['fulltitle'] + "'"
+            #path = "splittapes/" + metadata['fulltitle']
+            path = "splittapes/" + new_playlist_id.to_s
+            path_mkdir= "splittapes/" + new_playlist_id.to_s
             mkdir_call = "mkdir " + path_mkdir
             system mkdir_call
 
-            ffmpeg_call = "ffmpeg -ss " + track['start_time'].to_s + " -i " + '"' + source + '"' + " -vn -c copy -t " + duration.to_s + " \"" + path + "/" + track['title'] + ".m4a" + "\""
+            new_track = Track.create(name: title, artist: artist, duration: duration_in_seconds, filepath: path+"/"+track['title']+".m4a")
+
+            ffmpeg_call = "ffmpeg -ss " + track['start_time'].to_s + " -i " + '"' + source + '"' + " -vn -c copy -t " + duration.to_s + " \"" + path + "/" + new_track['id'].to_s+ ".m4a" + "\""
+
+            #ffmpeg_call_old = "ffmpeg -ss " + track['start_time'].to_s + " -i " + '"' + source + '"' + " -vn -c copy -t " + duration.to_s + " \"" + path + "/" + track['title'] + ".m4a" + "\""
+
+
+
             #ffmpeg_call = "ffmpeg -ss " + track['start_time'].to_s + " -i " + "'" + source +"'"+ " -vn -c copy -t " + duration.to_s + " 'top_kek/boii/" + track['title'] + ".m4a" + "'"
+
             puts ffmpeg_call
             system ffmpeg_call
 
 
 
-            track = Track.create(name: title, artist: artist, duration: duration_in_seconds, filepath: path+"/"+track['title']+".m4a")
-            PlaylistTrack.create(playlist_id: new_playlist_id, track_id: track.id)
+            PlaylistTrack.create(playlist_id: new_playlist_id, track_id: new_track['id'])
         end
 
         return true
