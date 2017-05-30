@@ -1,7 +1,7 @@
 <template>
     <div id="content-col">
         <div id="content-header">
-            <h1>{{truncate(playlist.name)}}</h1>
+            <h1>{{playlist.name}}</h1>
             <img class="thumbnail" v-bind:src="playlist.thumbnail_path">
         </div>
         <glow></glow>
@@ -22,7 +22,7 @@ export default {
   data () {
     return {
         tracks: new Array(),
-        playlist: {name: "fuckoff"}
+        playlist: {name: ""}
     }
   },
   components: {
@@ -31,7 +31,8 @@ export default {
   },
   methods: {
       fetchTracks(id) {
-            this.$http.get('https://cloudtracks.sadnc.com/api/test/playlist_tracks/' + id + '?token=' + this.$session.get('tok'), {
+            this.$http.get('http://localhost:4567/test/playlist_tracks/' + id + '?token=' + this.$session.get('tok'), {
+            // this.$http.get('https://cloudtracks.sadnc.com/api/test/playlist_tracks/' + id + '?token=' + this.$session.get('tok'), {
                 before(request) {
                 if (this.previousRequest) {
                     this.previousRequest.abort();
@@ -50,7 +51,8 @@ export default {
             });
       },
       fetchPlaylist(id) {
-            this.$http.get('https://cloudtracks.sadnc.com/api/test/playlists/' + id + '?token=' + this.$session.get('tok'), {
+            this.$http.get('http://localhost:4567/test/playlists/' + id + '?token=' + this.$session.get('tok'), {
+            // this.$http.get('https://cloudtracks.sadnc.com/api/test/playlists/' + id + '?token=' + this.$session.get('tok'), {
                 before(request) {
                 if (this.previousRequest) {
                     this.previousRequest.abort();
@@ -111,12 +113,14 @@ export default {
 }
 
 h1 {
+    background-color: red;
     float: left;
     letter-spacing: 4px;
     font-size: 24px;
     color: #282828;
     margin-left: 60px;
-    max-width: 450px;
+    max-width: 475px;
+    text-indent: 0;
 }
 
 #content {

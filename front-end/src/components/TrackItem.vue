@@ -4,9 +4,11 @@
             <div class="pp-button" href="#play">
                 <img src="../assets/play-large.png">
             </div>
-            <p class="artist">{{track.artist + " - "}}</p>
-            <p class="title">{{track.name}}</p>
-            <p class="duration">{{convertTime(track.duration)}}</p>
+            <div class="details">
+                <p class="artist">{{track.artist + " - "}}</p>
+                <p class="title">{{track.name}}</p>
+                <p class="duration">{{convertTime(track.duration)}}</p>
+            </div>
         </div>
     </li>
 </template>
@@ -31,8 +33,8 @@ export default {
       },
 
       setTrack(track, playlist) {
-            var serverPath = "/media/" + playlist.playlist_id + "/" + track.id + ".m4a";
-            // var testPath = "/media/splittapes/" + playlist.playlist_id + "/" + track.id + ".m4a";
+            var serverPath = "/static/splittapes/" + playlist.playlist_id + "/" + track.id + ".m4a";
+            // var serverPath = "/media/" + playlist.playlist_id + "/" + track.id + ".m4a";
 
             console.log(serverPath);
             this.$session.set('track', serverPath);
@@ -92,16 +94,27 @@ p {
     font-size: 13px;
 }
 
-.title {
-    margin-left: 16px;
+.details {
+    width: 100%;
+    position: absolute;
+    left: 0;
 }
 
 .artist {
+    /*position: absolute;*/
+    /*left: 0;*/
+    background-color: red;
     opacity: 0.55;
     margin-left: 50px;
 }
 
+.title {
+    background-color: blue;
+    margin-left: 16px;
+}
+
 .duration {
+    background-color: yellow;
     float: right;
     margin-right: 16px;
 }

@@ -29,7 +29,8 @@ export default {
   },
   methods: {
       fetchPlaylists() {
-            this.$http.get('https://cloudtracks.sadnc.com/api/test/playlists?token=' + this.$session.get('tok'), {
+            this.$http.get('http://localhost:4567/test/playlists?token=' + this.$session.get('tok'), {
+            // this.$http.get('https://cloudtracks.sadnc.com/api/test/playlists?token=' + this.$session.get('tok'), {
                 before(request) {
                 if (this.previousRequest) {
                     this.previousRequest.abort();

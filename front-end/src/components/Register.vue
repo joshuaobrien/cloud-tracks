@@ -59,11 +59,14 @@ export default {
                 token: 'meme'
             };
 
-            this.$http.post('https://cloudtracks.sadnc.com/api/test/create_user', newUser, {
+            this.$http.post('http://localhost:4567/test/create_user', newUser, {
+            // this.$http.post('https://cloudtracks.sadnc.com/api/test/create_user', newUser, {
                 emulateJSON: true
             }).then(response => {
                 newUser.token = response.body;
-                this.$http.post('https://cloudtracks.sadnc.com/api/test/login', newUser, {
+                
+                this.$http.post('http://localhost:4567/test/login', newUser, {
+                // this.$http.post('https://cloudtracks.sadnc.com/api/test/login', newUser, {
                     emulateJSON: true
                 }).then(response => {
                     if (response.status == 201) {
