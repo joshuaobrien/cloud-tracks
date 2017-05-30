@@ -31,8 +31,11 @@ export default {
       },
 
       setTrack(track, playlist) {
-            this.$session.set('track', "/" + playlist.playlist_id + "/" + track.id);
-            // this.$session.set('track', "../static/trap.mp3")
+            var serverPath = "/media/" + playlist.playlist_id + "/" + track.id;
+            var testPath = "/static/splittapes/" + playlist.playlist_id + "/" + track.id + ".m4a";
+
+            console.log(testPath);
+            this.$session.set('track', testPath);
             bus.$emit('trackChange');
       }
   }
