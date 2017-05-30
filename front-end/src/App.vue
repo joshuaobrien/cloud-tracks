@@ -78,7 +78,7 @@ export default {
 			var track = tracks[index];
 
 			var path = "/media/" + playlist.playlist_id + "/" + track.id + ".m4a"
-			$('audio').src = this.makePath(this.$session.get('track'));
+			$('audio').src = path;
 			$('audio').load();
 
 			$('#nowplaying').innerHTML = track.artist + " - " + track.name;
