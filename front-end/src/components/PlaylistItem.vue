@@ -98,6 +98,7 @@ export default {
     color: #282828;
     letter-spacing: 0.2px;
     width: 160px;
+    height: 26px;
     text-overflow: ellipsis;
     word-wrap: break-word;
 }
