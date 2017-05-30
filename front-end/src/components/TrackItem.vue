@@ -15,7 +15,7 @@
 import bus from '../eventBus'
 export default {
   name: 'track-item',
-  props: ['track'],
+  props: ['track', 'playlist'],
   data () {
     return {
     }
@@ -30,9 +30,9 @@ export default {
           return minutes + ":" + subSeconds;
       },
 
-      setTrack(filepath) {
-            // this.$session.set('track', "../" + filepath);
-            this.$session.set('track', "../static/trap.m4a")
+      setTrack(track, playlist) {
+            this.$session.set('track', "/" + playlist.playlist_id + "/" + track.id);
+            // this.$session.set('track', "../static/trap.mp3")
             bus.$emit('trackChange');
       }
   }

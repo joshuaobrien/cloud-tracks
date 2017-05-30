@@ -7,7 +7,7 @@
         <glow></glow>
         <div id="content">
             <ol>
-                <track-item v-for="item in tracks" v-bind:track="item" v-bind:key="item.id">
+                <track-item v-for="item in tracks" v-bind:track="item" v-bind:playlist="playlist" v-bind:key="item.id">
                 </track-item>
             </ol>
         </div>

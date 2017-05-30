@@ -22,7 +22,7 @@
     <router-view></router-view>
 
 		<div class="footer-container">
-			<audio src="../static/trap.m4a" controls/>
+			<audio src="../static/meme.m4a" controls autoplay/>
 		</div>
 
   </div>
@@ -44,7 +44,6 @@ export default {
 		  if (!this.$session.exists()) {
 			this.$session.start();
 			this.$session.set('prv', '/');
-			this.$session.set('track', "../static/meme.m4a")
 		  }
 	  },
   },
@@ -53,7 +52,7 @@ export default {
 	  getLoginButtonText: {
 		  cache: false,
 		  get() {
-			if (this.session.has('tok')) {
+			if (this.$session.has('tok')) {
 				this.loginLink = '/logout';
 				return "logout";
 		  	} else {
