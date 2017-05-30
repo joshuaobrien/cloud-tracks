@@ -1,15 +1,16 @@
 <template>
     <div id="content-col">
-        <div id="content-header">
+        <header id="content-header">
             <h1>playlists</h1>
-        </div>
+        </header>
         <glow></glow>
-        <div id="content">
+
+        <main id="content">
             <ol>
                 <playlist-item v-for="item in playlists" v-bind:playlist="item" v-bind:key="item.id">
                 </playlist-item>
             </ol>
-        </div>
+        </main>
     </div>
 </template>
 

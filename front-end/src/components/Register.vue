@@ -4,17 +4,20 @@
             <div id="content">
                 <glow></glow>
                 <logo-box message="create account"></logo-box>
-                <form @submit.prevent="newUserSubmit">
-                    <div id="inputs-container">
-                            <input class="reg-input" type="text" spellcheck="false" placeholder="username" v-model="userName">
-                            <input class="reg-input" type="password" placeholder="password" v-model="userPass">
-                            <input class="reg-input" type="password" placeholder="confirm password" v-model="userPassConfirm">
-                    </div>
 
-                    <div id="button-container">
-                        <input type="submit" value="\\ create" class="button" id="go-button ">
-                    </div>
-                </form>
+                <main>
+                    <form @submit.prevent="newUserSubmit">
+                        <div id="inputs-container">
+                                <input class="reg-input" type="text" spellcheck="false" placeholder="username" v-model="userName">
+                                <input class="reg-input" type="password" placeholder="password" v-model="userPass">
+                                <input class="reg-input" type="password" placeholder="confirm password" v-model="userPassConfirm">
+                        </div>
+
+                        <div id="button-container">
+                            <input type="submit" value="\\ create" class="button" id="go-button ">
+                        </div>
+                    </form>
+                </main>
             </div>
         </div>
     </div>

@@ -1,7 +1,7 @@
 <template>
   <div id="app">
 
-    <div class="navbar">
+    <nav class="navbar">
 
 			<ul class="navbar-link-container">
 				<li ><router-link to="/">
@@ -17,13 +17,13 @@
 					<div class="nav-button">{{getLoginButtonText}}</div>
 				</router-link></li>
 			</ul>
-    </div>
+    </nav>
 
     <router-view></router-view>
 
-		<div class="footer-container">
+		<footer class="footer-container">
 			<audio src="" controls autoplay/>
-		</div>
+		</footer>
 
   </div>
 </template>

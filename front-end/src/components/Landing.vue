@@ -4,18 +4,21 @@
             <div id="content">
                 <glow></glow>
                 <logo-box></logo-box>
-                <form id="paste-box-container" @submit.prevent="linkSubmit">
-                    <input type="text" spellcheck="false" v-model="userLink" v-bind:class="{ 'blocked': isDownloading}">
-                    <div id="button-container">
-                        <div class="icon-button" id="download-button" @click="linkSubmit">
-                            <img src="../assets/cloud-download.png" alt="download-button-icon">
-                        </div>
-                    </div>
-                </form>
 
-                <div class="under-box" @click="">
+                <main>
+                    <form id="paste-box-container" @submit.prevent="linkSubmit">
+                        <input type="text" spellcheck="false" v-model="userLink" v-bind:class="{ 'blocked': isDownloading}">
+                        <div id="button-container">
+                            <div class="icon-button" id="download-button" @click="linkSubmit">
+                                <img src="../assets/cloud-download.png" alt="download-button-icon">
+                            </div>
+                        </div>
+                    </form>
+                </main>
+
+                <aside class="under-box" @click="">
                     <p v-if="isDownloading">{{statusMessage}}</p>
-                </div>
+                </aside>
 
             </div>
         </div>
@@ -30,7 +33,7 @@ export default {
   data () {
     return {
         userLink: "https://www.youtube.com/watch?v=MOFG0dtkGRk",
-        statusMessage: "DOWNLOADING...",
+        statusMessage: "\\\\ downloading in progress",
         isDownloading: false
     }
   },
@@ -203,7 +206,7 @@ export default {
 
 p {
     display: inline-block;
-    width: 180px;
+    width: 100% ;
     padding: 16px;
 }
 </style>

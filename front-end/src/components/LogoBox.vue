@@ -1,5 +1,5 @@
 <template>
-    <div id="content">
+    <figure id="content">
         <div id="logo-container">
             <img id="logo" src="../assets/cloud.png" alt="cloud-tracks-logo">
         </div>
@@ -7,7 +7,7 @@
         <div id="title">
             <p>{{message}}</p>
         </div>
-    </div>
+    </figure>
 </template>
 
 <script>

@@ -1,16 +1,17 @@
 <template>
     <div id="content-col">
-        <div id="content-header">
+        <header id="content-header">
             <h1>{{playlist.name}}</h1>
             <img class="thumbnail" v-bind:src="playlist.thumbnail_path" alt="playlist-thumbnail">
-        </div>
+        </header>
+
         <glow></glow>
-        <div id="content">
+        <main id="content">
             <ol>
                 <track-item v-for="item in tracks" v-bind:track="item" v-bind:playlist="playlist" v-bind:key="item.id">
                 </track-item>
             </ol>
-        </div>
+        </main>
     </div>
 </template>
 
