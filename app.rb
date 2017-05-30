@@ -89,7 +89,7 @@ post '/test/create_user' do
         user.token = SecureRandom.uuid
 
         if user.save
-            response = {:token => token.to_s}
+            response = {:token => user.token.to_s}
             json response
             status 200
         else
