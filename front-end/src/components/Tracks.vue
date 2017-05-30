@@ -31,11 +31,7 @@ export default {
   },
   methods: {
       fetchTracks(id) {
-        let data = {
-            token: this.$session.get('tok')
-        };
-
-            this.$http.get('http://localhost:4567/test/playlist_tracks/' + id + '/token=' + this.$session.get('tok'), {
+            this.$http.get('http://localhost:4567/test/playlist_tracks/' + id + '?token=' + this.$session.get('tok'), {
                 before(request) {
                 if (this.previousRequest) {
                     this.previousRequest.abort();
@@ -53,7 +49,7 @@ export default {
             });
       },
       fetchPlaylist(id) {
-            this.$http.get('http://localhost:4567/test/playlists/' + id + '/token=' + this.$session.get('tok'), {
+            this.$http.get('http://localhost:4567/test/playlists/' + id + '?token=' + this.$session.get('tok'), {
                 before(request) {
                 if (this.previousRequest) {
                     this.previousRequest.abort();
