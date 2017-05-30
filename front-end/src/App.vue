@@ -56,7 +56,7 @@ export default {
 		};
 		
 		if (this.isMobile) {
-			alert("MOBILE");
+			$('.app').css({ transform: 'scale(.2)' });
 		} else {
 			alert("not mobile");
 		}
