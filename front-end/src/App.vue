@@ -22,7 +22,7 @@
     <router-view></router-view>
 
 		<div class="footer-container">
-			<audio src="../static/meme.m4a" controls autoplay/>
+			<audio src="" controls autoplay/>
 		</div>
 
   </div>
