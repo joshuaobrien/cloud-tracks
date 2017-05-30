@@ -11,7 +11,7 @@ import vueResource from 'vue-resource'
 import VueSession from 'vue-session'
 
 Vue.config.productionTip = false
-Vue.use(vueResource);
+Vue.use(vueResource)
 Vue.use(VueSession)
 
 /* eslint-disable no-new */
