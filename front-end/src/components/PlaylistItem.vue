@@ -6,12 +6,12 @@
                     <img class="thumbnail" v-bind:src="playlist.thumbnail_path" href="#okay" alt="playlist-thumbnail-image">
                 </router-link>
 
-                <a class="pp-button" href="#play">
+                <!--<a class="pp-button" href="#play">
                     <img src="../assets/play-large.png" alt="playbutton-icon">
-                </a>
+                </a>-->
             </div>
 
-            <p class="playlist-title">{{truncate(playlist.name)}}</p>
+            <p class="playlist-title">{{playlist.name}}</p>
             <!--<p class="playlist-artist">{{playlist.artist}}</P>-->
         </div>
     </li>
@@ -57,6 +57,8 @@ export default {
 
 .playlist-thumbnail-container:hover {
     cursor: pointer;
+    opacity: 0.8;
+    box-shadow: 0 10px 20px -10px black;
 }
 
 .playlist-thumbnail-container:hover .pp-button {
@@ -107,5 +109,10 @@ export default {
     margin-top: 8px;
     font-size: 12px;
     opacity: 0.8;
+}
+
+p {
+    width: 160px;
+    text-overflow: ellipsis;
 }
 </style>
