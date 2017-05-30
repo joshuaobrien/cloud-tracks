@@ -1,6 +1,6 @@
 <template>
     <li>
-        <div class="track-item">
+        <div @click="setTrack(track.filepath)" class="track-item">
             <div class="pp-button" href="#play">
                 <img src="../assets/play-large.png">
             </div>
@@ -12,6 +12,7 @@
 </template>
 
 <script>
+import bus from '../eventBus'
 export default {
   name: 'track-item',
   props: ['track'],
@@ -27,6 +28,12 @@ export default {
             subSeconds = "0" + subSeconds;
           }
           return minutes + ":" + subSeconds;
+      },
+
+      setTrack(filepath) {
+            // this.$session.set('track', "../" + filepath);
+            this.$session.set('track', "../static/trap.m4a")
+            bus.$emit('trackChange');
       }
   }
 }

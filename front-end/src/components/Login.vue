@@ -81,11 +81,6 @@ export default {
         }
     },
     created: function() {
-    },
-    beforeRouteEnter(to, from, next) {
-         next(vm => {
-             vm.$session.set('prv', from.path);
-         })
     }
 }
 </script>

@@ -41,6 +41,7 @@ export default {
 
             }).then(response => {
                 this.tracks = response.body;
+                console.log(this.tracks)
                 // console.log(this.tracks);
                 this.fetchPlaylist(id);
             }, response => {
@@ -66,9 +67,9 @@ export default {
             });
       },
       truncate(message) {
-          if (message.length > 24) {
-              message = message.substring(0, 21) + "...";
-          }
+        //   if (message.length > 24) {
+        //       message = message.substring(0, 21) + "...";
+        //   }
           return message;
       }
   },
