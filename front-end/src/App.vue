@@ -56,9 +56,9 @@ export default {
 		};
 		
 		if (this.isMobile) {
-			$('.app').css({ transform: 'scale(.2)' });
+			$('router-view').css({ transform: 'scale(.2)' });
 		} else {
-			alert("not mobile");
+			$('router-view').css({ transform: 'scale(.2)' });
 		}
 	  }
   },
@@ -80,7 +80,7 @@ export default {
 
   created: function() {
 	  this.handleSession();
-	  this.handleMobile();
+	//   this.handleMobile();
 		bus.$on('trackChange', function() {
 			$('audio').src = this.$session.get('track');
 			$('audio').load();
