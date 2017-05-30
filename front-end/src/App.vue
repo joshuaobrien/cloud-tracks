@@ -153,4 +153,10 @@ audio {
 	width: 700px;
 	background-color: #f2f2f2;
 }
+
+@media handheld {
+	 .navbar {
+		 background-color: red;
+	 }
+}
 </style>

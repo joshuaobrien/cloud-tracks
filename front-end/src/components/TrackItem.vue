@@ -2,7 +2,7 @@
     <li>
         <div @click="setTrack(track, playlist)" class="track-item">
             <div class="pp-button" href="#play">
-                <img src="../assets/play-large.png">
+                <img src="../assets/play-large.png" alt="play-button-icon">
             </div>
             <div class="details">
                 <p class="artist">{{track.artist + " - "}}</p>
