@@ -1,6 +1,6 @@
 <template>
     <li>
-        <div @click="setTrack(track.filepath)" class="track-item">
+        <div @click="setTrack(track, playlist)" class="track-item">
             <div class="pp-button" href="#play">
                 <img src="../assets/play-large.png">
             </div>
@@ -32,7 +32,7 @@ export default {
 
       setTrack(track, playlist) {
             var serverPath = "/media/" + playlist.playlist_id + "/" + track.id;
-            var testPath = "/static/splittapes/" + playlist.playlist_id + "/" + track.id + ".m4a";
+            var testPath = "/media/splittapes/" + playlist.playlist_id + "/" + track.id + ".m4a";
 
             console.log(testPath);
             this.$session.set('track', testPath);
