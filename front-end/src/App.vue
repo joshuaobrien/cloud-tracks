@@ -154,9 +154,15 @@ audio {
 	background-color: #f2f2f2;
 }
 
-@media handheld {
-	 .navbar {
-		 background-color: red;
-	 }
+@media screen 
+  and (device-width: 1440px) 
+  and (device-height: 2560px) 
+  and (orientation: portrait) {
+	.navbar {
+		background-color: red;
+	}
+	.footer-container {
+		background-color: red;
+	}
 }
 </style>
