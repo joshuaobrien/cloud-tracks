@@ -43,6 +43,7 @@ export default {
 
             }).then(response => {
                 this.tracks = response.body;
+                this.$session.set('tracks', this.tracks) // Set session Tracks
                 console.log(this.tracks)
                 // console.log(this.tracks);
                 this.fetchPlaylist(id);
@@ -63,6 +64,7 @@ export default {
 
             }).then(response => {
                 this.playlist = response.body;
+                this.$session.set('playlist', this.playlist); // Set session Playlist
                 console.log(this.playlist)
             }, response => {
                 // error callback

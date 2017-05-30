@@ -1,6 +1,6 @@
 <template>
     <li>
-        <div @click="setTrack(track, playlist)" class="track-item">
+        <div @click="setTrack(track.id)" class="track-item">
             <div class="pp-button" href="#play">
                 <img src="../assets/play-large.png" alt="play-button-icon">
             </div>
@@ -32,12 +32,12 @@ export default {
           return minutes + ":" + subSeconds;
       },
 
-      setTrack(track, playlist) {
+      setTrack(index) {
             // var serverPath = "/static/splittapes/" + playlist.playlist_id + "/" + track.id + ".m4a";
-            var serverPath = "/media/" + playlist.playlist_id + "/" + track.id + ".m4a";
+            // var serverPath = "/media/" + playlist.playlist_id + "/" + track.id + ".m4a";
+            // console.log(serverPath);
 
-            console.log(serverPath);
-            this.$session.set('track', serverPath);
+            this.$session.set('index', index - 1);
             bus.$emit('trackChange');
       }
   }
@@ -100,6 +100,10 @@ p {
     left: 0;
 }
 
+.details:hover {
+    cursor: pointer;
+}
+
 .artist {
     /*position: absolute;*/
     /*left: 0;*/
@@ -117,5 +121,8 @@ p {
     /*background-color: yellow;*/
     float: right;
     margin-right: 16px;
+}
+li:hover {
+    cursor: pointer;
 }
 </style>

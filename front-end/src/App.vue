@@ -23,6 +23,7 @@
 
 		<footer class="footer-container">
 			<audio src="" controls autoplay/>
+			<p id="nowplaying">Now Playing: Kanye West - Power</p>
 		</footer>
 
   </div>
@@ -36,7 +37,8 @@ export default {
     return {
         loginButtonText: "login",
 		loginLink: "/login",
-		isMobile: false
+		isMobile: false,
+		track: ""
     }
   },
 
@@ -46,6 +48,9 @@ export default {
 			this.$session.start();
 			this.$session.set('prv', '/');
 		  }
+	  },
+	  makePath(track, playlist) {
+		  return "/media/" + playlist.playlist_id + "/" + track.id + ".m4a";
 	  }
   },
 
@@ -67,8 +72,16 @@ export default {
   created: function() {
 	  this.handleSession();
 		bus.$on('trackChange', function() {
-			$('audio').src = this.$session.get('track');
+			var playlist = this.$session.get('playlist');
+			var tracks = this.$session.get('tracks');
+			var index = this.$session.get('index');
+			var track = tracks[index];
+
+			var path = "/media/" + playlist.playlist_id + "/" + track.id + ".m4a"
+			$('audio').src = this.makePath(this.$session.get('track'));
 			$('audio').load();
+
+			$('#nowplaying').innerHTML = track.artist + " - " + track.name;
 		});
   }
 }
@@ -134,15 +147,23 @@ export default {
 
 .footer-container {
 	position:fixed;
-	height:50px;
+	height:45px;
+	width: 100%;
 	background-color: #fbfbfb;
 	bottom:0px;
-	left:0px;
-	right:0px;
-	margin-bottom:0px;
+
+	color: #282828;
+	font-size: 13px;
 
 	text-align: center;
 	box-shadow: 0 -7px 20px -10px lightgray;
+}
+
+.footer-container > p {
+	position: absolute;
+	margin-left: 15px;
+	bottom: 16px;
+	display: inline-block;
 }
 
 button {
@@ -151,16 +172,9 @@ button {
 }
 
 audio {
-	width: 700px;
+	margin-top: 5px;
+	width: 640px;
+	margin-left: -250px;
 	background-color: #f2f2f2;
-}
-
-@media (max-width:1280px) {
-	/*.navbar {
-		background-color: red;
-	}
-	.footer-container {
-		background-color: red;
-	}*/
 }
 </style>

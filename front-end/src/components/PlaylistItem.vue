@@ -6,9 +6,9 @@
                     <img class="thumbnail" v-bind:src="playlist.thumbnail_path" href="#okay" alt="playlist-thumbnail-image">
                 </router-link>
 
-                <!--<a class="pp-button" href="#play">
+                <a class="pp-button" href="#play">
                     <img src="../assets/play-large.png" alt="playbutton-icon">
-                </a>-->
+                </a>
             </div>
 
             <p class="playlist-title">{{truncate(playlist.name)}}</p>
@@ -18,6 +18,7 @@
 </template>
 
 <script>
+import bus from '../eventBus'
 export default {
   name: 'playlist-item',
   props: ['playlist'],
@@ -58,8 +59,8 @@ export default {
 
 .playlist-thumbnail-container:hover {
     cursor: pointer;
-    opacity: 0.8;
-    box-shadow: 0 10px 20px -10px black;
+    opacity: 0.9;
+    box-shadow: 0 10px 20px -10px #282828;
 }
 
 .playlist-thumbnail-container:hover .pp-button {
