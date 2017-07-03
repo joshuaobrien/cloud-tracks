@@ -10,4 +10,5 @@ gem 'streamio-ffmpeg'
 
 gem "activerecord"
 gem "sinatra-activerecord"
+gem "sinatra-cross_origin"
 gem "pg"
