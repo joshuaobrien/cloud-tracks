@@ -78,9 +78,18 @@ export default {
 			var track = tracks[index];
 
 			var path = "/media/" + playlist.playlist_id + "/" + track.id + ".m4a"
-			$('audio').src = path;
-			$('audio').load();
-
+      var audio = $('audio');
+      audio.src = path;
+      audio.load();
+      if (index < tracks.length - 1) {
+        audio.addEventListener('ended', () => {
+	  console.log('next track playing now');
+          this.$session.set('index', index + 1);
+          bus.$emit('trackChange');
+        });
+	console.log('queued next track');
+      }
+	console.log('playing stuff');
 			$('#nowplaying').innerHTML = track.artist + " - " + track.name;
 		});
   }
