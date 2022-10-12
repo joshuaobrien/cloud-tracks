@@ -12,6 +12,7 @@ specifiers:
   '@types/react-dom': ^18.0.6
   '@vercel/node': ^2.4.4
   eslint: ^8.23.1
+  prisma: ^4.4.0
   react: ^18.2.0
   react-dom: ^18.2.0
   typescript: ^4.7.4
@@ -32,6 +33,7 @@ devDependencies:
   '@types/react': 18.0.21
   '@types/react-dom': 18.0.6
   eslint: 8.25.0
+  prisma: 4.4.0
   typescript: 4.8.4
 
 packages:
@@ -1519,6 +1521,11 @@ packages:
       picocolors: 1.0.0
       tiny-glob: 0.2.9
       tslib: 2.4.0
+    dev: true
+
+  /@prisma/engines/4.4.0:
+    resolution: {integrity: sha512-Fpykccxlt9MHrAs/QpPGpI2nOiRxuLA+LiApgA59ibbf24YICZIMWd3SI2YD+q0IAIso0jCGiHhirAIbxK3RyQ==}
+    requiresBuild: true
     dev: true
 
   /@remix-run/dev/1.7.2_63cxfdg5f5bb4xpkk3vcjfcl3q:
@@ -6321,6 +6328,15 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       parse-ms: 2.1.0
+
+  /prisma/4.4.0:
+    resolution: {integrity: sha512-l/QKLmLcKJQFuc+X02LyICo0NWTUVaNNZ00jKJBqwDyhwMAhboD1FWwYV50rkH4Wls0RviAJSFzkC2ZrfawpfA==}
+    engines: {node: '>=14.17'}
+    hasBin: true
+    requiresBuild: true
+    dependencies:
+      '@prisma/engines': 4.4.0
+    dev: true
 
   /process-nextick-args/2.0.1:
     resolution: {integrity: sha512-3ouUOpQhtgrbOa17J7+uxOTpITYWaGP7/AhoR3+A+/1e9skrzelGi/dXzEYyvbxubEF6Wn2ypscTKiKJFFn1ag==}
