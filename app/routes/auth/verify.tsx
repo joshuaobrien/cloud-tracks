@@ -8,10 +8,16 @@ const badRequest = (data: any) => json(data, { status: 400 });
 export const loader: LoaderFunction = async ({ request }) => {
   const url = new URL(request.url);
 
-  const email = url.searchParams.get('email') ?? 'ligma';
-  const token = url.searchParams.get('token') ?? 'ligma';
+  const email = url.searchParams.get('email');
+  const token = url.searchParams.get('token');
+  const type = url.searchParams.get('type') ?? 'magiclink';
 
-  if (typeof token !== 'string' || typeof email !== 'string') {
+  if (
+    typeof token !== 'string' ||
+    typeof email !== 'string' ||
+    typeof type !== 'string' ||
+    (type !== 'signup' && type !== 'magiclink')
+  ) {
     return badRequest({
       formError: `Form not submitted correctly.`,
     });
@@ -20,6 +26,7 @@ export const loader: LoaderFunction = async ({ request }) => {
   const user = await verify({
     email,
     token,
+    type,
   });
 
   if (!user.id) {

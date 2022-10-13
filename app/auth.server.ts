@@ -6,7 +6,12 @@ type LoginForm = {
 };
 
 export async function login({ email }: LoginForm) {
-  const { error } = await supabase.auth.signInWithOtp({ email });
+  const { error } = await supabase.auth.signInWithOtp({
+    email,
+  });
+
+  // Working Supabase links for Email Templates:
+  // href="{{ .SiteURL }}/auth/verify?email={{ .Email }}&token={{ .Token }}&type=[signup|magiclink]"
 
   if (error) {
     console.error('~auth.server > login error', error);
@@ -19,14 +24,16 @@ export async function login({ email }: LoginForm) {
 type VerifyForm = {
   email: string;
   token: string;
+  type: 'magiclink' | 'signup';
 };
 
-export async function verify({ email, token }: VerifyForm) {
+export async function verify({ email, token, type }: VerifyForm) {
   const { data, error } = await supabase.auth.verifyOtp({
-    type: 'magiclink',
+    type,
     email,
     token,
   });
+  // see https://github.com/supabase/gotrue#get-verify
 
   console.log('~supabase.auth.verifyOtp', { data, error });
 
