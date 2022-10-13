@@ -46,10 +46,7 @@ export default function Verify() {
 
   return (
     <div>
-      <div>
-        <h1>Cloudtracks</h1>
-        <p>Verifying login...</p>
-      </div>
+      <p>Verifying login...</p>
     </div>
   );
 }

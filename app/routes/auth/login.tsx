@@ -56,13 +56,16 @@ export default function Login() {
   const [searchParams] = useSearchParams();
   return (
     <div>
-      <h1>Cloudtracks</h1>
-      <form method="post">
+      <form method="post" className="flex p-8 ">
         <input type="hidden" name="redirectTo" value={searchParams.get('redirectTo') ?? undefined} />
 
         <div>
-          <label htmlFor="email-input">Email</label>
+          <label htmlFor="email-input" className="pr-8 font-bold">
+            Email:
+          </label>
           <input
+            autoFocus
+            className="p-2 bg-black bg-opacity-5"
             type="text"
             id="email-input"
             name="email"
@@ -78,16 +81,13 @@ export default function Login() {
         </div>
 
         <div id="form-error-message">{actionData?.formError ? <p role="alert">{actionData.formError}</p> : null}</div>
-        <button type="submit">Submit</button>
-      </form>
 
-      <nav>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-        </ul>
-      </nav>
+        <div className="flex justify-end">
+          <button className="p-4 text-gray-100 bg-black" type="submit">
+            Login
+          </button>
+        </div>
+      </form>
     </div>
   );
 }

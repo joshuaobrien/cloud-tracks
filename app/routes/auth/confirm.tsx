@@ -1,8 +1,7 @@
 export default function Confirm() {
   return (
-    <div>
-      <h1>Cloudtracks</h1>
-      <p>Please check your email for a magic link</p>
+    <div className="mt-8 tracking-tighter text-center text-gray-800">
+      <p>Please check your email for your login link</p>
     </div>
   );
 }
