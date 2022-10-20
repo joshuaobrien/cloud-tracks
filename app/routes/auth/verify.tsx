@@ -1,41 +1,31 @@
 import type { LoaderFunction } from '@remix-run/node';
 import { json } from '@remix-run/node';
 import { useLoaderData, useSearchParams } from '@remix-run/react';
-import { createUserSession, verify } from '~/auth.server';
+import { createUserSession, verify } from '~/utils/auth.server';
+import { db } from '~/utils/db.server';
 
 const badRequest = (data: any) => json(data, { status: 400 });
 
 export const loader: LoaderFunction = async ({ request }) => {
   const url = new URL(request.url);
-
   const email = url.searchParams.get('email');
   const token = url.searchParams.get('token');
   const type = url.searchParams.get('type') ?? 'magiclink';
 
-  if (
-    typeof token !== 'string' ||
-    typeof email !== 'string' ||
-    typeof type !== 'string' ||
-    (type !== 'signup' && type !== 'magiclink')
-  ) {
+  if (typeof token !== 'string' || typeof email !== 'string' || (type !== 'signup' && type !== 'magiclink')) {
     return badRequest({
-      formError: `Form not submitted correctly.`,
+      formError: 'Invalid form data',
     });
   }
 
-  const user = await verify({
-    email,
-    token,
-    type,
-  });
+  const userId = await verify({ email, token, type });
 
-  if (!user.id) {
-    return badRequest({
-      formError: 'Not implemented',
-    });
-  }
+  // TODO: Get this working
+  // if (type === 'signup') {
+  //   await db.user.create({ data: { id: userId, email } });
+  // }
 
-  return createUserSession(user.id, '/dashboard');
+  return createUserSession(userId, '/dashboard');
 };
 
 export default function Verify() {

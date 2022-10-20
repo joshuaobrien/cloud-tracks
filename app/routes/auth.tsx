@@ -1,12 +1,11 @@
 import type { LoaderFunction } from '@remix-run/node';
-import { redirect } from '@remix-run/node';
 import { Link, Outlet, useLoaderData } from '@remix-run/react';
-import { getUserId } from '~/auth.server';
+import { maybeSession } from '~/utils/auth.server';
 
 export const loader: LoaderFunction = async ({ request }) => {
-  const userId = await getUserId(request);
-  return userId ? redirect('/dashboard') : null;
+  return maybeSession(request);
 };
+
 export default function AuthLayout() {
   useLoaderData();
 

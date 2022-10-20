@@ -2,7 +2,7 @@ import type { ActionFunction } from '@remix-run/node';
 import { redirect } from '@remix-run/node';
 import { json } from '@remix-run/node';
 import { Link, useActionData, useSearchParams } from '@remix-run/react';
-import { login } from '~/auth.server';
+import { login } from '~/utils/auth.server';
 
 function validateUrl(url: any) {
   console.log(url);
