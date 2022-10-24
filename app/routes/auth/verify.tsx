@@ -20,10 +20,9 @@ export const loader: LoaderFunction = async ({ request }) => {
 
   const userId = await verify({ email, token, type });
 
-  // TODO: Get this working
-  // if (type === 'signup') {
-  //   await db.user.create({ data: { id: userId, email } });
-  // }
+  if (type === 'signup') {
+    await db.user.create({ data: { id: userId, email } });
+  }
 
   return createUserSession(userId, '/dashboard');
 };
