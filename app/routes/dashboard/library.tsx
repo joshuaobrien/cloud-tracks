@@ -37,9 +37,10 @@ export default function Library() {
       <h1 className="font-bold text-black text-9xl text-opacity-5 whitespace-nowrap">🎧 Playlists</h1>
       <ul className="grid max-w-5xl grid-cols-3 gap-2 mt-12 sm:grid-cols-4 md:grid-cols-5">
         <li className="flex flex-col bg-rose-700 bg-opacity-5 aspect-square" key={'add'}>
-          {/* todo: make submission screen */}
           <div className="px-2 font-mono text-xs font-semibold text-gray-800 bg-rose-700 bg-opacity-5">
-            Add new
+            <Link to="creator">
+              Add new
+            </Link>
           </div>
         </li>
         {playlists.map((playlist) => (
