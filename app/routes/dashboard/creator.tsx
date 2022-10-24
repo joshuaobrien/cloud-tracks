@@ -20,6 +20,7 @@ async function submitUrl(url: string, userId: string): Promise<string> {
     data: {
       name: `${getRandomWord()} ${getRandomWord()} ${getRandomWord()}`,
       userId,
+      sourceUrl: url,
     }
   })
 
