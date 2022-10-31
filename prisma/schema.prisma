@@ -17,6 +17,7 @@ model Playlist {
   id        String  @id @default(uuid())
   name      String
   sourceUrl String
+  path      String
   tracks    Track[]
   User      User?   @relation(fields: [userId], references: [id])
   userId    String?
