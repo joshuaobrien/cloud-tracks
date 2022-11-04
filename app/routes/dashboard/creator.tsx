@@ -2,25 +2,47 @@ import { Playlist } from "@prisma/client";
 import { ActionFunction, json, redirect } from "@remix-run/node";
 import { requireUserId } from "~/utils/auth.server";
 import { db } from '~/utils/db.server';
+import fs from 'fs';
+import youtubedl from "youtube-dl-exec";
+const { exec } = require('child_process');
+const crypto = require('crypto');
 
-const randomWords = [
-  'stoat',
-  'macbook',
-  'marmalade',
-  'skyline',
-  'ebike',
-  'bronte',
-  'tea',
-];
 
-const getRandomWord = () => randomWords[Math.floor(Math.random() * randomWords.length)];
+async function processUrl(url: string): Promise<{ title: string, path: string }> {
+  console.log(`Ripping ${url}`);
+
+  // for some reason this doesn't download the content.
+  // for now we we just use it for metadata, and use the
+  // dodgy exec for content
+  const title = await youtubedl(
+    url,
+    { extractAudio: true, getTitle: true },
+    { }
+  );
+
+  const filename = crypto.randomUUID();
+  // -f: force
+  // ba: best audio
+  // -x: audio only (I think)
+  // -P: path
+  // todo: investigate 'split-chapters' option
+  console.log(exec(`yt-dlp -f 'ba' -x --audio-format mp3 ${url} -P "public/rips" -o "${filename}.%(ext)s"`));
+
+  return {
+    title: title as any as string, // the types are wrong
+    path: `rips/${filename}.mp3`
+  }
+}
 
 async function submitUrl(url: string, userId: string): Promise<string> {
+  console.log('YAH')
+  const { title, path } = await processUrl(url)
   const { id } = await db.playlist.create({
     data: {
-      name: `${getRandomWord()} ${getRandomWord()} ${getRandomWord()}`,
+      name: title,
       userId,
       sourceUrl: url,
+      path,
     }
   })
 
