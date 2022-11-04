@@ -24,10 +24,10 @@ model Playlist {
 }
 
 model Track {
-  id                 String    @id @default(uuid())
-  Playlist           Playlist? @relation(fields: [playlistId], references: [id])
-  playlistId         String?
-  name               String
-  start_time_seconds Int
-  end_time_seconds   Int
+  id               String    @id @default(uuid())
+  Playlist         Playlist? @relation(fields: [playlistId], references: [id])
+  playlistId       String?
+  name             String
+  startTimeSeconds Int
+  endTimeSeconds   Int
 }
