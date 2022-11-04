@@ -7,6 +7,8 @@ node_modules
 
 /build/
 /public/build
+/public/rips
 /api/index.js
 /api/index.js.map
 /api/_assets/tailwind*
+.DS_Store
