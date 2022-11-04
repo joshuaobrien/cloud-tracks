@@ -44,8 +44,16 @@ export default function Library() {
           </div>
         </li>
         {playlists.map((playlist) => (
-          <li className="flex flex-col bg-white aspect-square" key={playlist.id}>
-            <div className="px-2 font-mono text-xs font-semibold text-gray-800 bg-black bg-opacity-5">
+          <li
+            style={{ backgroundImage: `url(${playlist.thumbnailUrl})`}}
+            className={`flex flex-col aspect-square bg-no-repeat bg-cover bg-center`} key={playlist.id}>
+            <div
+              className="px-2 font-mono text-xs font-semibold text-white bg-opacity-5"
+              style={{
+                // so you can always see the text no matter the background colours
+                textShadow: "-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000"
+              }}
+            >
               <Link to={`player/${playlist.id}`}>
                 {playlist.name}
               </Link>

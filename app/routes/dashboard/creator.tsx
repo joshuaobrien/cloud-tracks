@@ -3,22 +3,35 @@ import { ActionFunction, json, redirect } from "@remix-run/node";
 import { requireUserId } from "~/utils/auth.server";
 import { db } from '~/utils/db.server';
 import fs from 'fs';
-import youtubedl from "youtube-dl-exec";
+import youtubedl  from "youtube-dl-exec";
 const { exec } = require('child_process');
 const crypto = require('crypto');
 
+type Chapter = {
+  start_time: number,
+  end_time: number,
+  title: string,
+}
 
-async function processUrl(url: string): Promise<{ title: string, path: string }> {
+// the included types are wrong. we fix them here for now.
+// todo: fix this upstream
+type Response = Awaited<ReturnType<typeof youtubedl>> & { chapters?: Chapter[] };
+
+async function processUrl(url: string): Promise<{ title: string, path: string, tracks: Chapter[], thumbnail: string }> {
   console.log(`Ripping ${url}`);
 
   // for some reason this doesn't download the content.
   // for now we we just use it for metadata, and use the
   // dodgy exec for content
-  const title = await youtubedl(
+  const { title, thumbnail, chapters } = (await youtubedl(
     url,
-    { extractAudio: true, getTitle: true },
+    { extractAudio: true, dumpSingleJson: true, skipDownload: true },
     { }
-  );
+  )) as Response;
+
+  if (chapters == null) {
+    throw new Error("world's best error handling");
+  }
 
   const filename = crypto.randomUUID();
   // -f: force
@@ -26,23 +39,30 @@ async function processUrl(url: string): Promise<{ title: string, path: string }>
   // -x: audio only (I think)
   // -P: path
   // todo: investigate 'split-chapters' option
-  console.log(exec(`yt-dlp -f 'ba' -x --audio-format mp3 ${url} -P "public/rips" -o "${filename}.%(ext)s"`));
+  exec(`yt-dlp -f 'ba' -x --audio-format mp3 ${url} -P "public/rips" -o "${filename}.%(ext)s"`);
 
   return {
-    title: title as any as string, // the types are wrong
+    title,
+    tracks: chapters,
+    thumbnail,
     path: `rips/${filename}.mp3`
   }
 }
 
 async function submitUrl(url: string, userId: string): Promise<string> {
-  console.log('YAH')
-  const { title, path } = await processUrl(url)
+  const { title, path, tracks, thumbnail } = await processUrl(url)
   const { id } = await db.playlist.create({
     data: {
       name: title,
       userId,
       sourceUrl: url,
+      thumbnailUrl: thumbnail, // todo: download this and host it ourselves
       path,
+      tracks: {
+        createMany: {
+          data: tracks.map(({ title, start_time, end_time }) => ({ name: title, startTimeSeconds: start_time, endTimeSeconds: end_time })),
+        }
+      },
     }
   })
 
