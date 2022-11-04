@@ -1,5 +1,5 @@
 import { json, LoaderFunction } from "@remix-run/node";
-import { useParams } from "@remix-run/react"
+import { useLoaderData } from "@remix-run/react"
 import { requireUserId } from "~/utils/auth.server";
 import { db } from "~/utils/db.server";
 
@@ -11,7 +11,7 @@ export const loader: LoaderFunction = async ({ request, params }) => {
     return json({}, { status: 400});
   }
 
-  const playlist = db.playlist.findUnique({
+  const playlist = await db.playlist.findUnique({
     where: {
       id,
     }
@@ -21,15 +21,17 @@ export const loader: LoaderFunction = async ({ request, params }) => {
 }
 
 export default function Player() {
-  const params = useParams();
+  const data = useLoaderData();
 
 
   return (
     <div className="flex flex-col flex-1 px-4 py-8 bg-sky-50">
-      <h1 className="font-bold text-black text-9xl text-opacity-5 whitespace-nowrap">{`🎶 Playback (${params.playlistId})`}</h1>
-      {
-        JSON.stringify(params)
-      }
+      <h1 className="font-bold text-black text-9xl text-opacity-5 whitespace-nowrap">{`🎶 (${data.playlist.name})`}</h1>
+      <audio
+        autoPlay
+        controls
+        src={`/${data.playlist.path}`}
+      />
     </div>
   )
 }
