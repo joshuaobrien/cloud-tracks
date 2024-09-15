@@ -1,4 +1,4 @@
-name: Deploy
+name: Migrate database
 on:
   push:
     paths:
