@@ -1,0 +1,48 @@
+name: Deploy to ECS
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'apps/api/**'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Log in to Amazon ECR
+        run: |
+          aws ecr get-login-password --region ${{ secrets.AWS_REGION }} | docker login --username AWS --password-stdin ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com
+
+      - name: Build the Docker image
+        run: |
+          docker build -t ${{ secrets.ECR_REPOSITORY_NAME }} -f backend/Dockerfile .
+
+      - name: Tag the Docker image
+        run: |
+          docker tag ${{ secrets.ECR_REPOSITORY_NAME }}:latest ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/${{ secrets.ECR_REPOSITORY_NAME }}:latest
+
+      - name: Push the Docker image to ECR
+        run: |
+          docker push ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/${{ secrets.ECR_REPOSITORY_NAME }}:latest
+
+      - name: Deploy to ECS
+        run: |
+          aws ecs update-service \
+            --cluster arn:aws:ecs:ap-southeast-2:084828586816:cluster/InfrastructureStack-CloudTracksCluster0422E031-zdsK2YzzmUlP \
+            --service arn:aws:ecs:ap-southeast-2:084828586816:service/InfrastructureStack-CloudTracksCluster0422E031-zdsK2YzzmUlP/InfrastructureStack-CloudTracksFargateService1430BF18-7txQGOahsfIt \
+            --force-new-deployment
