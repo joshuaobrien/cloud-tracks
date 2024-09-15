@@ -12,3 +12,10 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Todo {
+  id String @id @default(uuid())
+  createdAt DateTime @default(now())
+  completed Boolean @default(false)
+  content String
+}
