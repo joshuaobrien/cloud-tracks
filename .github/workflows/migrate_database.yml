@@ -1,10 +1,9 @@
 name: Migrate database
 on:
-  # Allow manual triggering
   workflow_dispatch:
   push:
     paths:
-      - prisma/migrations/** # Only run this workflow when migrations are updated
+      - prisma/migrations/**
     branches:
       - master
 
@@ -18,11 +17,20 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: '22'  # Specify your Node.js version
+          node-version: '22'
 
       - name: Install AWS CLI
         run: |
           sudo apt-get install -y awscli
+
+      - name: Configure AWS credentials
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        run: |
+          aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
+          aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
+          aws configure set region ap-southeast-2
 
       - name: Fetch secrets from AWS Secrets Manager
         id: fetch-secrets
@@ -33,14 +41,12 @@ jobs:
       - name: Construct DATABASE_URL
         id: construct-db-url
         run: |
-          # Extract the secrets from the fetched JSON
           DB_NAME=$(echo "$SECRET" | jq -r .dbname)
           DB_ENGINE=$(echo "$SECRET" | jq -r .engine)
           DB_PASSWORD=$(echo "$SECRET" | jq -r .password)
           DB_USER=$(echo "$SECRET" | jq -r .username)
           DB_HOST=$(echo "$SECRET" | jq -r .host)
 
-          # Construct the DATABASE_URL
           DATABASE_URL="${DB_ENGINE}://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}"
           echo "DATABASE_URL=$DATABASE_URL" >> $GITHUB_ENV
 
