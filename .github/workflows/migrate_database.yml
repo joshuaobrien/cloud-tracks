@@ -1,0 +1,51 @@
+name: Deploy
+on:
+  push:
+    paths:
+      - prisma/migrations/** # Only run this workflow when migrations are updated
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '22'  # Specify your Node.js version
+
+      - name: Install AWS CLI
+        run: |
+          sudo apt-get install -y awscli
+
+      - name: Fetch secrets from AWS Secrets Manager
+        id: fetch-secrets
+        run: |
+          SECRET=$(aws secretsmanager get-secret-value --secret-id your-secret-id --query SecretString --output text)
+          echo "SECRET=$SECRET" >> $GITHUB_ENV
+
+      - name: Construct DATABASE_URL
+        id: construct-db-url
+        run: |
+          # Extract the secrets from the fetched JSON
+          DB_NAME=$(echo "$SECRET" | jq -r .dbname)
+          DB_ENGINE=$(echo "$SECRET" | jq -r .engine)
+          DB_PASSWORD=$(echo "$SECRET" | jq -r .password)
+          DB_USER=$(echo "$SECRET" | jq -r .username)
+          DB_HOST=$(echo "$SECRET" | jq -r .host)
+
+          # Construct the DATABASE_URL
+          DATABASE_URL="${DB_ENGINE}://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}"
+          echo "DATABASE_URL=$DATABASE_URL" >> $GITHUB_ENV
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Apply all pending migrations to the database
+        run: npx prisma migrate deploy
+        env:
+          DATABASE_URL: ${{ env.DATABASE_URL }}
